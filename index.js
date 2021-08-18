@@ -13,7 +13,8 @@ let playerDatabase = [
     ['Jeff Katz', 'male', '4'],
     ['Katie Folkner', 'female', '1'],
     ['Davey Folkner', 'male', '2'],
-    ['Brian', 'male', '1']
+    ['Brian', 'male', '1'],
+    ['Katie Krones', 'female', '3']
 ];
 
 // Select players
