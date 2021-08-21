@@ -16,7 +16,27 @@ let playerDatabase = [
     ['Brian', 'male', '1'],
     ['Katie Krones', 'female', '3']
 ];
+// Display player list
+const displayPlayers = () => {
+    let playerTable = document.getElementById('player-table');
+    for(players in playerDatabase){
+        let row = playerTable.insertRow();
+        let selectionCell = row.insertCell();
+        let checkbox = document.createElement('input');
+        checkbox.type = "checkbox";
+        checkbox.value = playerDatabase[players];
+        checkbox.name = "check";
+        selectionCell.appendChild(checkbox);
+        let nameCell = row.insertCell();
+        nameCell.innerHTML = playerDatabase[players][0];
+        let genderCell = row.insertCell();
+        genderCell.innerHTML = playerDatabase[players][1];
+        let strengthCell = row.insertCell();
+        strengthCell.innerHTML = playerDatabase[players][2];
+    }
+}
 
+displayPlayers();
 // Select players
 let selectedPlayers = document.getElementById('player-data');
 selectedPlayers.addEventListener('submit', async function(e) {
@@ -25,15 +45,15 @@ selectedPlayers.addEventListener('submit', async function(e) {
         let markedBoxes = document.getElementsByName('check'); 
         for(let checkbox of markedBoxes) {
             if(checkbox.checked){    
-            let participant = checkbox.value;;
-            playerPool.push(participant)
-            
+                let participant = checkbox.value;
+                let participantArray = participant.split(','); 
+                playerPool.push(participantArray)
             }  
         }
-        console.log(playerPool)
     }
     
     selectPlayers();
+    sortPlayers(playerPool);
     calcTeams();
 });
 
@@ -41,7 +61,7 @@ selectedPlayers.addEventListener('submit', async function(e) {
 let playerPool = [];
 
 // Calculate teams
-let calcTeams = () => {
+const calcTeams = () => {
     let twoTeams = Math.floor(playerPool.length/2);
     let fourTeams = Math.floor(playerPool.length/4);
 
@@ -51,20 +71,25 @@ let calcTeams = () => {
     displayFour.insertAdjacentHTML('beforeend', fourTeams);
 }
 
+// Select number of teams 
+const selectTeamNumber = (number) => {
+    generateTeams(number);
+}
+
 
 
 // Teams
 let teams = [];
 
 // Generate number of teams
-let generateTeams = () => {
-    let numberOfTeams= 4;
+let generateTeams = (selection) => {
+    let numberOfTeams= selection;
     for(let i=1; i <= numberOfTeams; i++){
         teams.push([]);
     }
+    
+    buildTeams(sorted);
 }
-
-
 
 
 // Generate team
@@ -96,17 +121,18 @@ const buildTeams = (playerData) => {
         } 
         
     };
+    displayTeams(teams);
 };
 
-// console.log(teams)
-
+let sorted = []; 
 // Sort by gender then strength
 const sortPlayers = () => {
     let males = [];
     let females = [];
-    let sorted = []; 
+   
     for(players in playerPool){
         let matches = playerPool[players][1];
+        console.log(matches)
         let data = playerPool[players];
         if(matches === 'male'){
             males.push(data);
@@ -119,18 +145,21 @@ const sortPlayers = () => {
     females.sort(function(a,b){return a[2]-b[2]});
     
     sorted = males.concat(females);
-    buildTeams(sorted);
+    
 }
 
-sortPlayers();
+
 
 // Display teams
-const displayTeams = () => {
-    let table = document.getElementById('table');
-    let teamRow = table.insertRow(1);
-    let team1= teamRow.insertCell(0);
-    let team2= teamRow.insertCell(1);
-
-    team1.innerHTML = teams[0];
-    team2.innerHTML = teams[1];
-}
+const displayTeams = (teamData) => {
+    let table = document.getElementById('team-table');
+    
+    for(players in teamData){
+        let row = table.insertRow();
+        let team1= row.insertCell(0);
+        team1.innerHTML = teamData[0][players];
+        let team2= row.insertCell(1);
+        team2.innerHTML = teamData[1][players];
+    }
+   
+   }
