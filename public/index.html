@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <title>Team UP App</title>
+</head>
+<body>
+    <h1>Team UP App</h1>
+    <!-- Player Pool -->
+    <h2>Player Pool</h2>
+    <section id="player-pool"></section>
+    <!-- Player Form Positioner -->
+    <section id='update-positioner'>
+        <!-- Add Player Form -->
+        <div class="update-form">
+            <h2>Add Player</h2>
+            <form action="" id="new-player">
+                
+                <input type="text" id="first-name" class="name" placeholder="First name"><br>
+                <input type="text" id="last-name" class="name" placeholder="Last name"><br>
+                
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">female</label>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="female">male</label><br>
+
+                
+                <input type="radio" id="one" name="rating" value="1">
+                <label for="one">1</label>
+                <input type="radio" id="two" name="rating" value="2">
+                <label for="two">2</label>
+                <input type="radio" id="three" name="rating" value="3">
+                <label for="three">3</label>
+                <input type="radio" id="four" name="rating" value="4">
+                <label for="four">4</label>
+                <input type="radio" id="five" name="rating" value="5">
+                <label for="five">5</label>
+            </form>
+            <button class="form-submit" type="submit" form="new-player">Submit</button>
+        </div>
+        <!-- Edit Player Form -->
+        <div class="update-form">
+            <h2>Edit Player</h2>
+            <form action="" id="edit-player">
+                
+                <input type="text" id="first-name" class="name" placeholder="First name"><br>
+                <input type="text" id="last-name" class="name" placeholder="Last name"><br>
+                
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">female</label>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="female">male</label><br>
+
+                
+                <input type="radio" id="one" name="rating" value="1">
+                <label for="one">1</label>
+                <input type="radio" id="two" name="rating" value="2">
+                <label for="two">2</label>
+                <input type="radio" id="three" name="rating" value="3">
+                <label for="three">3</label>
+                <input type="radio" id="four" name="rating" value="4">
+                <label for="four">4</label>
+                <input type="radio" id="five" name="rating" value="5">
+                <label for="five">5</label>
+            </form>
+            <button class="form-submit" type="submit" form="edit-player">Submit</button>
+        </div>
+    </section>
+    <!-- Event Attendance Form -->
+    <h2>Event Attendance</h2>
+    <form action="" id="player-data"></form>
+        <table id="player-table">
+            <tr>
+                <label for="all">Select All</label>
+                <input type="checkbox" id="select-all" name="all">
+            </tr>
+            <tr>
+               <th>Select Player</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Player Gender</th>
+                <th>Player Rating</th>
+            </tr>
+        </table>
+        <div class="submit-positioner">
+            <button class="form-submit" type="submit" form="player-data">Submit</button>
+       </div>
+   
+    <div id="team-options">
+        <button id="two-teams" onclick="selectTeamNumber(2)">2 teams of about </button>
+        <button id="four-teams" onclick="selectTeamNumber(4)">4 teams of about </button>
+    </div>
+   <section id="team-display">
+       <div id="team-name-positioner"></div>
+       
+    </section> 
+</body>
+<script src="app.js"></script>
+</html>

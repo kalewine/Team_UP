@@ -1,0 +1,27 @@
+{
+  "name": "team_up",
+  "version": "1.0.0",
+  "description": "An app for pick up sports team\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Dbuilding sports teams",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kalewine/Team_UP.git"
+  },
+  "keywords": [
+    "teams",
+    "sports"
+  ],
+  "author": "Kayla Alewine",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kalewine/Team_UP/issues"
+  },
+  "homepage": "https://github.com/kalewine/Team_UP#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nedb": "^1.8.0"
+  }
+}
