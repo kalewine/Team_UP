@@ -9,70 +9,146 @@
     <title>Team UP App</title>
 </head>
 <body>
-    <h1>Team UP App</h1>
+    <header>
+        <h1 class="screen-title">Team UP</h1>
+    </header>
+    <section class="home-btns">
+        <a href="attendance.html">
+            <button class="home-btn" id="new-game">
+               
+                    <span class="btn-icon"></span>
+                <span class="btn-text">
+                    Start a <span class="bold-text">New Game</span>
+                </span>
+            </button>
+        </a>
+        <a href="teams.html">
+            <button class="home-btn" id="in-progress">
+                
+                    <span class="btn-icon"></span>
+                <span class="btn-text">
+                    Continue a <span class="bold-text">Game in Progress</span>
+                </span>
+            </button>
+        </a>
+        <a href="manage-players.html">
+            <button class="home-btn" id="manage">
+                
+                    <span class="btn-icon"></span>
+                <span class="btn-text">
+                    Manage <span class="bold-text">Players</span>
+                </span>
+            </button>
+        </a>
+    </section>
     <!-- Player Pool -->
-    <h2>Player Pool</h2>
-    <section id="player-pool"></section>
+    <!-- <h2>Player Pool</h2>
+    <button onclick="displayPlayerPool(lastNameSort)">Sort By Last Name</button>
+    <button onclick="displayPlayerPool(firstNameSort)">Sort By First Name</button>
+    <button onclick="displayPlayerPool(ratingSort)">Sort By Rating</button>
+    <section id="player-pool"></section> -->
     <!-- Player Form Positioner -->
-    <section id='update-positioner'>
+    <!-- <section id='update-positioner'> -->
         <!-- Add Player Form -->
-        <div class="update-form">
+        <!-- <div class="update-form">
             <h2>Add Player</h2>
-            <form action="" id="new-player">
-                
-                <input type="text" id="first-name" class="name" placeholder="First name"><br>
-                <input type="text" id="last-name" class="name" placeholder="Last name"><br>
-                
-                <input type="radio" id="female" name="gender" value="female">
-                <label for="female">female</label>
-                <input type="radio" id="male" name="gender" value="male">
-                <label for="female">male</label><br>
+            <form action="" id="new-player"> -->
+            <!-- Name Input-->
 
+                <!-- <input type="text" name="name" id="first-name" class="name" placeholder="First name" required><br>
+                <input type="text" name="name" id="last-name" class="name" placeholder="Last name" required><br> -->
+
+            <!-- Gender Input-->
+                <!-- <section class="gender-selection">
+                    <input type="radio" name="gender" id="male"  value="male" checked/>
+                    <label for="male" class="gender-label" id="male-label">male</label>
+                    <input type="radio" name="gender" id="female"  value="female"/>
+                    <label for="female" class="gender-label" id="female-label">female</label>
+                    <div class="gender-selector" id="gender-selector" /></div>
+                </section> -->
                 
-                <input type="radio" id="one" name="rating" value="1">
-                <label for="one">1</label>
-                <input type="radio" id="two" name="rating" value="2">
-                <label for="two">2</label>
-                <input type="radio" id="three" name="rating" value="3">
-                <label for="three">3</label>
-                <input type="radio" id="four" name="rating" value="4">
-                <label for="four">4</label>
-                <input type="radio" id="five" name="rating" value="5">
-                <label for="five">5</label>
+            <!-- Rating Input-->
+                <!-- <div class="rating-positioner">
+                    <div class="better-rating">better</div>
+                    <section class="rating-selection">
+                        <input type="radio" id="one" name="rating" value="1">
+                        <label for="one" class="rating-label">1</label>
+                        <input type="radio" id="two" name="rating" value="2">
+                        <label for="two" class="rating-label">2</label>
+                        <input type="radio" id="three" name="rating" value="3">
+                        <label for="three" class="rating-label">3</label>
+                        <input type="radio" id="four" name="rating" value="4">
+                        <label for="four" class="rating-label">4</label>
+                        <input type="radio" id="five" name="rating" value="5">
+                        <label for="five" class="rating-label">5</label>
+                        <div class="rating-selector" id="rating-selector"/></div>
+                    </section>
+                    <div class="worse-rating">worse</div>
+                </div>
             </form>
             <button class="form-submit" type="submit" form="new-player">Submit</button>
-        </div>
+        </div> -->
         <!-- Edit Player Form -->
-        <div class="update-form">
+        <!-- <div class="update-form">
             <h2>Edit Player</h2>
-            <form action="" id="edit-player">
-                
-                <input type="text" id="first-name" class="name" placeholder="First name"><br>
-                <input type="text" id="last-name" class="name" placeholder="Last name"><br>
-                
-                <input type="radio" id="female" name="gender" value="female">
-                <label for="female">female</label>
-                <input type="radio" id="male" name="gender" value="male">
-                <label for="female">male</label><br>
+            <form action="" id="edit-player"> -->
 
+            <!-- Edit Player Name -->
+                <!-- <input type="text" id="edit-first-name" class="name" placeholder="First name" ><br>
+                <input type="text" id="edit-last-name" class="name" placeholder="Last name" ><br> -->
+
+            <!-- Edit Player Gender -->
+                <!-- <div class="gender-selection">
+                    <input type="radio" name="edit-gender" id="edit-male"  value="male"/>
+                    <label for="edit-male" class="gender-label" id="edit-male-label">male</label>
+                    <input type="radio" name="edit-gender" id="edit-female"  value="female"/>
+                    <label for="edit-female" class="gender-label" id="edit-female-label">female</label>
+                    <div class="gender-selector" id="edit-gender-selector"/></div>
+                </div>
                 
-                <input type="radio" id="one" name="rating" value="1">
-                <label for="one">1</label>
-                <input type="radio" id="two" name="rating" value="2">
-                <label for="two">2</label>
-                <input type="radio" id="three" name="rating" value="3">
-                <label for="three">3</label>
-                <input type="radio" id="four" name="rating" value="4">
-                <label for="four">4</label>
-                <input type="radio" id="five" name="rating" value="5">
-                <label for="five">5</label>
+                <div id="player-id"></div> -->
+
+            <!-- Edit Rating -->
+                <!-- <div class="rating-positioner">
+                    <div class="better-rating">better</div>
+                  
+                    <section class="rating-selection">
+                        <input type="radio" id="edit-one" name="edit-rating" value="1">
+                        <label for="edit-one" class="rating-label">1</label>
+                        <input type="radio" id="edit-two" name="edit-rating" value="2">
+                        <label for="edit-two" class="rating-label">2</label>
+                        <input type="radio" id="edit-three" name="edit-rating" value="3">
+                        <label for="edit-three" class="rating-label">3</label>
+                        <input type="radio" id="edit-four" name="edit-rating" value="4">
+                        <label for="edit-four" class="rating-label">4</label>
+                        <input type="radio" id="edit-five" name="edit-rating" value="5">
+                        <label for="edit-five" class="rating-label">5</label>
+                        <div class="rating-selector" id="edit-rating-selector"/></div>
+                    </section>
+                    <div class="worse-rating">worse</div>
+                </div>
             </form>
-            <button class="form-submit" type="submit" form="edit-player">Submit</button>
+            <div id='delete-section'>
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </div>
+             -->
+            
+            
+            <!-- <button class="form-submit" type="submit" form="edit-player">Save</button>
+            <button id="cancel">Cancel</button>
         </div>
     </section>
+    <section id="delete-modal">
+        <p>Are you sure you want to delete this player?</p>
+        <button class="delete-options" id="yes">Yes, delete this player.</button>
+        <button class="delete-options" id="no">No, edit this player instead.</button>
+    </section> -->
     <!-- Event Attendance Form -->
-    <h2>Event Attendance</h2>
-    <form action="" id="player-data"></form>
+    <!-- <h2>Event Attendance</h2>
+        <button onclick="displayPlayers(lastNameSort)">Sort By Last Name</button>
+        <button onclick="displayPlayers(firstNameSort)">Sort By First Name</button>
+        <button onclick="displayPlayers(ratingSort)">Sort By Rating</button>
+    <form action="post" id="player-data"></form>
         <table id="player-table">
             <tr>
                 <label for="all">Select All</label>
@@ -91,13 +167,13 @@
        </div>
    
     <div id="team-options">
-        <button id="two-teams" onclick="selectTeamNumber(2)">2 teams of about </button>
-        <button id="four-teams" onclick="selectTeamNumber(4)">4 teams of about </button>
+        <button id="two-teams" onclick="selectTeamNumber(2)">2 teams of </button>
+        <button id="four-teams" onclick="selectTeamNumber(4)">4 teams of </button>
     </div>
    <section id="team-display">
-       <div id="team-name-positioner"></div>
+       <div id="column-positioner"></div>
        
-    </section> 
+    </section>  -->
 </body>
 <script src="app.js"></script>
 </html>
