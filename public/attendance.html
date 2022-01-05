@@ -8,32 +8,43 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title>Event Attendance</title>
 </head>
-<body>
+<body onload="displayPlayers(firstNameSort)">
     <header>
-        <h1 class="screen-title">Who's Attending</h1>
+        <h1 class="screen-title">Who's Attending?</h1>
     </header>
+    
      <!-- Event Attendance Form -->
-     <h2>Event Attendance</h2>
-     <button onclick="displayPlayers(lastNameSort)">Sort By Last Name</button>
-     <button onclick="displayPlayers(firstNameSort)">Sort By First Name</button>
-     <button onclick="displayPlayers(ratingSort)">Sort By Rating</button>
- <form action="post" id="player-data"></form>
-     <table id="player-table">
-         <tr>
-             <label for="all">Select All</label>
-             <input type="checkbox" id="select-all" name="all">
-         </tr>
-         <tr>
-            <th>Select Player</th>
-             <th>First Name</th>
-             <th>Last Name</th>
-             <th>Player Gender</th>
-             <th>Player Rating</th>
-         </tr>
-     </table>
-     <div class="submit-positioner">
-         <button class="form-submit" type="submit" form="player-data">Submit</button>
-    </div>
+    <main >
+        
+        <form  id="player-data"></form>
+       
+        <table id="player-table">
+            <thead>
+                <tr class="header-row">
+                    <th id="spacer-check"><input type="checkbox"></th>
+                    <th class="header-title" onclick="displayPlayers(firstNameSort)">First Name <i class="fas fa-arrow-down" id="first-name-arrow"></i></th>
+                    <th class="header-title" onclick="displayPlayers(lastNameSort)">Last Name <i class="fas fa-arrow-down" id="last-name-arrow"></i></th>
+                </tr>
+             </thead>
+            <!-- <tr>
+                <label for="all">Select All</label>
+                <input type="checkbox" id="select-all" name="all">
+            </tr> -->
+            
+        </table>
+        <div class="submit-positioner">
+            <button class="form-submit" id="attendance-btn" type="submit"   form="player-data">
+                <div class="btn-pos">
+                    <img id="arrow-right" src="arrow.png" alt="">
+                </div>
+                <div class="btn-pos">
+                    Proceed to
+                    <span>Number of Teams</span>
+                </div>
+            </button>
+                </div>
+        </div>
+    </main>
 </body>
-<script src="app.js"></script>
+<script src="attendance.js"></script>
 </html>

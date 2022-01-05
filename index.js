@@ -6,8 +6,10 @@ app.use(express.static('public'));
 app.use(express.json({limit:'1mb'}));
 
 const playerDatabase = new Datastore('database.db');
+const playerArray = new Datastore('playerarray.db');
 
 playerDatabase.loadDatabase();
+playerArray.loadDatabase();
 
 app.get('/getDatabase', (req, res) => {
     console.log('getDatabase request')
@@ -74,3 +76,33 @@ app.post('/removePlayer', (req, res) => {
     
 });
 
+
+app.post('/selectedPlayers', (req, res) => {
+    
+    let players = req.body;
+    players.forEach(player => playerArray.insert(player))
+    
+})
+
+app.get('/getPlayersArray', (req, res) => {
+    console.log('Get Players Array requested' )
+    
+    playerDatabase.find({}, (err, data) => {
+        if(err){
+            console.log(err)
+            res.end();
+            return;
+        }
+        res.json(data);
+    })
+})
+
+let numberOfTeams;
+
+app.post('/storeTeamsNumber', (req, res) => {
+    numberOfTeams = req.body;
+})
+
+app.get('/sendTeamsNumber', (req, res) => {
+    res.send(numberOfTeams)
+})

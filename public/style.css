@@ -1,8 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700;900&display=swap');
 
 :root {
-  --header-background:  linear-gradient(269.94deg, #F2456E 11.71%, #7A64FF 37.59%, #59FBE7 66.08%, #4FF017 99.95%);
+  --header-background:  linear-gradient(269.94deg, #F2456E 11.71%, #7D63FB 37.59%, #64C9EF 66.08%, #B4FEC9 99.95%);
+  --clickable: linear-gradient(90deg, #92EFAC 0%, #B4FEC9 105.5%);
+  /* --male: linear-gradient(90deg, #90ECFF 0%, #C6F5FF 100%); */
+  --male: #90ECFF;
+  --female: #FEAAD5;
+  /* --female: linear-gradient(90deg, #FEAAD5 0%, #FFD6EB 100%); */
+  --team-1: linear-gradient(90deg, #37e697 0%, #80f3d6 100%);
+  --team-2: linear-gradient(90deg, #64C9EF 0%, #7674FD 100%);
+  --team-3: linear-gradient(90deg, #7D63FB 0%, #EB74F2 100%);
+  --team-4: linear-gradient(90deg, #D94B8D 0%, #FFA89C 100%);
 }
+
+
 
 *{
   font-family: Roboto, Arial, sans-serif;
@@ -24,13 +35,15 @@ header {
   background: var(--header-background);
   margin-bottom: 1rem;
   top: 0;
+  z-index: 20;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .screen-title {
   color: #fff;
   font-weight: 400;
   font-size: 30px;
-  margin: auto 0; 
+  margin: auto 0;
 }
 
 /* Home Screen Styles */
@@ -41,11 +54,11 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 auto; 
+  margin: 4rem auto; 
   padding: 3rem 0; 
 }
 
-.home-btn {
+.large-home-btn {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -83,7 +96,7 @@ header {
 }
 
 #new-game {
-  background: linear-gradient(90deg, #92EFAC 0%, #B4FEC9 105.5%);
+  background: var(--clickable);
 }
 
 #in-progress {
@@ -97,30 +110,97 @@ header {
 }
 
 /* Manage Players Styles */
-#player-pool{
-  margin-top: 4rem; 
+.player-pool{
+  margin-top: 10rem; 
   height: 100vh;
 }
 
-.sort-btns {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+.hide-background{
+  overflow: hidden; 
+  height: 80vh;
+  margin-top: 3rem;
 }
 
-.sort-btn {
-  background: linear-gradient(90deg, #92EFAC 0%, #B4FEC9 105.5%);
-  border: none; 
+.sort-by {
+  position: relative; 
+  display: flex; 
+  justify-content: center;
+  top: 5rem;
+  z-index: -1;
+}
+
+.sort-section {
+  position: relative;
+  display: flex; 
+  justify-content: center;
+  z-index: 1;
+}
+
+.sort-selection {
+  position: absolute; 
+  width: 236px;
+  height: 37px;
+  background: #FFFFFF;
+  box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 27px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  top: 6rem;
+}
+
+.sort-selection:before {
+  content: '  ';
+  position: absolute;
+  left: 0;
+  z-index: -1;
+  background-color: #fff;
+}
+
+.sort-selector {
+  position: absolute;
+  width: 50%;
+  height: 90%;
+  left: 2px;
+  transition: 0.4s;
   border-radius: 24px;
-  padding: 0.5rem;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(90deg, #8790FF 0%, #90ECFF 100%);
+}
+
+.sort-selector::before {
+  position: absolute;
+  content: "";
+  width: 118px;
+  height: 90%;
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  border-radius: 24px;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.sort-label {
+  width: fit-content;
+  z-index: 1;
+  font-size: 20px;
   cursor: pointer;
 }
 
+
+
+input#sort-first-manage:checked ~ #manage-sort-selector {
+  transform: translateX(96%);
+  background: linear-gradient(90deg, #EC76FF 3.12%, #FFABD3 87.5%);
+}
+
+/* input#sort-last-manage:checked ~ #manage-sort-selector {
+  transform: translateX(0%);
+  background: linear-gradient(90deg, #EC76FF 3.12%, #FFABD3 87.5%);
+} */
+
+
 .player-obj {
-  background: linear-gradient(0deg, #F4F4F4, #F4F4F4);
-  border: solid 1px #000;
   display: flex; 
   align-items: center;
   border-radius: 34px;
@@ -129,14 +209,22 @@ header {
   height: 59px;
 }
 
+.male {
+  border: 5px solid var(--male);
+}
+
+.female {
+  border: 5px solid  var(--female);
+}
+
 .player-name { 
   height: 100%;
-  width: 50%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  margin-left: 3rem;  
+  text-align: center;
+  margin-left: 1rem;  
   cursor: default;
 } 
 
@@ -155,10 +243,12 @@ header {
 .player-rating {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   font-size: 2rem; 
   width: 25%;
   height: 100%;
   cursor: default;
+  margin-right: 1.5rem;
 }
 
 #update-positioner {
@@ -167,7 +257,7 @@ header {
 }
 
 .edit-player-icon {
-  margin-left: 2rem; 
+  margin-left: 1.5rem; 
   cursor: pointer;
   color: #000;
 }
@@ -176,8 +266,20 @@ header {
   position: fixed; 
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin: 0 1rem; 
   cursor: pointer;
+}
+
+.letters:hover {
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  transform: scale(1.1);
+  border-radius: 50%;
+  background: linear-gradient(0deg, #F4F4F4, #F4F4F4);
+  border: solid 1px #000;
+  padding: 0 5px;
 }
 
 #add-btn {
@@ -192,15 +294,15 @@ header {
 /* Edit/Add Modals Styles */
 #manage-modals {
   display: none; 
-  /* display: flex; */
   width: 100%;
-  height: inherit;
+  height: 100vh;
   position: absolute; 
   top: 0;
   right: 0; 
   flex-direction: column; 
   align-items: center;
   background-color:rgba(14, 14, 14, 0.71);
+  z-index: 100;
 }
 
 .manage-modal {
@@ -208,13 +310,14 @@ header {
   align-items: center;
   justify-content: space-evenly;
   position: absolute;
-  height: 80%;
+  height: 500px;
   width: 80%;
   background-color: #fff;
   top: 0;
   border-radius: 10px;
-  margin-top: 3rem;
-  padding: 0rem 1rem;
+  margin: 3rem 0 4rem 0;
+  padding: 2rem 1rem 1rem 1rem;
+  z-index: 10; 
 }
 
 .manage-form {
@@ -227,13 +330,14 @@ header {
 .manage-title {
   font-weight: normal; 
   font-size: 20px;
+  margin-bottom: 1rem;
 }
 
 .position-btns {
   width: 100%;
   display: flex; 
   justify-content: space-between;
-  bottom: 0;
+  margin-top: 1rem;
 }
 
 .manage-btns, .manage-cancel, .manage-submit {
@@ -248,6 +352,7 @@ header {
 
 .manage-cancel {
   border: 2px solid #313E32;
+  background: white;
 }
 
 .manage-submit {
@@ -292,9 +397,9 @@ input[type="text"]{
   display: none;
 }
 
-.fa, fas-trash {
-  color: #FF0000;
-  margin-bottom: 2rem;
+.trash {
+  margin-top: 1rem;
+  height: 3rem;
   cursor: pointer;
 }
 
@@ -464,7 +569,7 @@ input#female:checked ~ #gender-selector, input#edit-female:checked ~ #edit-gende
   height: 33px;
   left: 2px; 
   border-radius: 24px;
-  background: linear-gradient(90deg, #48D26E -11.9%, #9CFFB7 100%);
+  background: var(--clickable);
   -webkit-transition: .4s;
   transition: 0.4s'
 }
@@ -510,7 +615,104 @@ input#five:checked ~ #rating-selector, input#edit-five:checked ~ #edit-rating-se
 }
 
 /* Event Attendance Styles */
+#player-table {
+  width: 100vw;
+  margin: 3.5rem 0.2rem 0 0.2rem;
+  /* border-collapse: collapse; */
+}
 
+.selected {
+  font-weight: bold; 
+}
+
+tr {
+  text-align: left;
+}
+
+.table-row td {
+  border-bottom: solid 0.2px #CFCFCF;
+  
+}
+
+.table-row td:not(:first-child){
+  border-left: solid 0.2px #CFCFCF;
+  padding: 0.5rem 0 0.5rem 1rem;
+  
+}
+
+.table-row td:first-child {
+  width: 10%;
+  padding: 0.6rem 1rem 0.4rem 0.5rem;
+}
+
+th {
+  padding: 0.5rem;
+  top: 3.5rem;
+  position: sticky;
+  background: white;
+  width: 100vw;
+  font-weight: 400;
+  border-bottom: solid 2px #424242;
+  z-index: 20;
+}
+
+.header-title {
+  border-left: solid 0.2px #CFCFCF;
+  cursor: pointer;
+  color: #757575;
+}
+
+
+#first-name-arrow, #last-name-arrow {
+  padding-left: 1rem;
+  color: #CFCFCF;
+}
+
+#spacer-check input {
+  visibility: hidden; 
+}
+
+input[type="checkbox"] {
+  transform: scale(1.8);
+}
+
+.submit-positioner {
+  width: 100vw; 
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+ 
+}
+
+#attendance-btn {
+  position: relative; 
+  display: flex; 
+  justify-content: space-around;
+  align-items: center;
+  background: var(--clickable);
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 13px;
+  border: none;
+  width: 263px;
+  height: 66px;
+  margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+
+.btn-pos {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-pos span {
+  font-weight: bold;
+  font-size: 1.1rem; 
+}
+
+#arrow-right {
+  width: 27px;
+}
 
 /* Team styles */
 #team-display {
@@ -556,41 +758,54 @@ input#five:checked ~ #rating-selector, input#edit-five:checked ~ #edit-rating-se
   font-size: 0.5rem;
 }
 
-.team-1-color, .team-3-color {
-  --team-color:  #6A0000;
-  background-color: var(--team-color);
+.team-1-color {
+  background: var(--team-1);
 }
 
-.team-2-color, .team-4-color {
-  --team-color: #02006A;
-  background-color: var(--team-color);
+.team-2-color {
+  background: var(--team-2);
 }
 
-.team-1-player, .team-3-player {
-  --rgb: 255, 138, 138;
-  --team-color: #6A0000;
+.team-3-color {
+  background: var(--team-3);
+  
 }
 
-.team-2-player, .team-4-player {
-  --rgb: 114, 112, 255;
-  --team-color: #02006A;
- 
+.team-4-color {
+  background: var(--team-4);
+}
+
+.team-1-player {
+  --rgb: 86, 248, 175;
+}
+
+
+.team-2-player {
+  --rgb: 100, 201, 239;
+}
+
+.team-3-player {
+  --rgb: 235, 116, 242;
+}
+
+.team-4-player {
+ --rgb: 255, 168, 156
 }
 
 .rating-1 {
-  background-color: rgba(var(--rgb), 1);
+  background: rgba(var(--rgb), 1);
 }
 
 .rating-2 {
-  background-color: rgba(var(--rgb), 0.8);
+  background: rgba(var(--rgb), 0.8);
 }
 
 .rating-3 {
-  background-color: rgba(var(--rgb), 0.6);
+  background: rgba(var(--rgb), 0.6);
 }
 
 .rating-4 {
-  background-color: rgba(var(--rgb), 0.4);
+  background: rgba(var(--rgb), 0.4);
 }
 
 .rating-5 {
@@ -607,6 +822,39 @@ input#five:checked ~ #rating-selector, input#edit-five:checked ~ #edit-rating-se
   width: 150px;
   height: 35px;
   cursor: pointer;
+}
+
+/* Selecting number of teams */
+.num-btns {
+  width: 100%;
+  height: auto;
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6rem;
+}
+
+.team-num {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 300px;
+  height: 125px;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 17px;
+  border: none;
+  margin: 3rem 0;
+  cursor: pointer;
+  font-size: 16px;
+  background: var(--clickable);
+  padding: 1rem;
+}
+
+.team-num span {
+  font-size: 4.5rem;
+  font-weight: bold;
 }
 
 /* Swapping team players */
