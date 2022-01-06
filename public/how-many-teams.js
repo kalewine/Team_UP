@@ -2,6 +2,7 @@ const teamNumber =  async() => {
     // Get playersArray from server
     const getPlayersArray = await fetch('/getPlayersArray'); 
     const playerData = await getPlayersArray.json();
+    console.log(playerData)
     let twoTeams = Math.floor(playerData.length/2);
     let fourTeams = Math.floor(playerData.length/4);
     displayOptions(twoTeams, fourTeams)

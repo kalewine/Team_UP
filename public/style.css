@@ -48,14 +48,12 @@ header {
 
 /* Home Screen Styles */
 .home-btns {
-  width: 100%;
-  height: auto;
+  height: 100vh;
   display: flex; 
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 4rem auto; 
-  padding: 3rem 0; 
+  padding-top: 1.8rem;
 }
 
 .large-home-btn {
@@ -68,7 +66,7 @@ header {
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 17px;
   border: none;
-  margin: 1.5rem 0;
+  margin: 1rem 0;
   cursor: pointer;
   font-size: 16px;
 }
@@ -78,9 +76,12 @@ header {
 .btn-icon {
   width: 50px;
   height: 50px;
-  border: 2px blue solid;
-  margin: 0 1rem 0 2rem;
-  
+  margin: 0 1rem 0 2.5rem;
+}
+
+.btn-icon img {
+  width: 50px;
+  height: 50px;
 }
 
 .btn-text {
@@ -164,7 +165,7 @@ header {
   left: 2px;
   transition: 0.4s;
   border-radius: 24px;
-  background: linear-gradient(90deg, #8790FF 0%, #90ECFF 100%);
+  background: linear-gradient(90deg, #37e697 0%, #80f3d6 100%);
 }
 
 .sort-selector::before {
@@ -191,7 +192,7 @@ header {
 
 input#sort-first-manage:checked ~ #manage-sort-selector {
   transform: translateX(96%);
-  background: linear-gradient(90deg, #EC76FF 3.12%, #FFABD3 87.5%);
+  background: linear-gradient(90deg, #D94B8D 0%, #FFA89C 100%);
 }
 
 /* input#sort-last-manage:checked ~ #manage-sort-selector {
@@ -462,16 +463,14 @@ input[type='radio']{
 
  .better-rating {
   position: relative;
-  transform-origin: center;
-  transform: rotate(-90deg);
-  left: 10px;
+  left: 4px;
+  height: 50px;
 }
 
 .worse-rating{
   position: relative;
-  transform-origin: center;
-  transform: rotate(90deg);
-  right: 12px;
+  right: 7px;
+  height: 50px;
 }
 
 /* Gender Selectors */
@@ -631,7 +630,7 @@ tr {
 
 .table-row td {
   border-bottom: solid 0.2px #CFCFCF;
-  
+  border-collapse: collapse;
 }
 
 .table-row td:not(:first-child){
@@ -732,7 +731,7 @@ input[type="checkbox"] {
 
 .name-container {
   width: 100%; 
-  height: 5rem;
+  height: 3rem;
   display: flex; 
   flex-direction: row; 
   justify-content: center;
@@ -818,7 +817,7 @@ input[type="checkbox"] {
   display: flex; 
   align-items: center;
   border-radius: 59px;
-  margin: 0.8rem 1rem 0.8rem 0; 
+  margin: 0.8rem 1rem; 
   width: 150px;
   height: 35px;
   cursor: pointer;
@@ -859,7 +858,7 @@ input[type="checkbox"] {
 
 /* Swapping team players */
 .swapping {
-  border: dashed 2px var(--team-color);
+  border: dashed 2px rgba(var(--rgb, 1));
   background-color: rgba(var(--rgb), 0.3)
 }
 

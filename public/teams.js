@@ -108,11 +108,11 @@ const displayTeams = (teamData) => {
         
         teamName.setAttribute('class', 'team-name');
         teamName.setAttribute('id', 'team-' + teamNumber + '-name')
+        teamName.setAttribute('onclick', `editTeamName(${teamNumber})`);
         nameInput.setAttribute('class', 'name-input');
         nameInput.setAttribute('id', 'name-input-' + teamNumber)
         nameInput.setAttribute('value', 'Team ' + teamNumber)
         editIcon.setAttribute('class', 'fas fa-pen edit-name-pen');
-        editIcon.setAttribute('onclick', `editTeamName(${teamNumber})`);
         column.setAttribute('id', 'team-' + teamNumber);
         column.setAttribute('class', "team-column")
         teamName.innerHTML = ("Team " + teamNumber);

@@ -136,7 +136,6 @@ selectPlayers.addEventListener('submit', async (e) => {
     }
    
     getPlayers();
-
     const playerOptions = {
         method: 'POST', 
         body: JSON.stringify(playerArray),

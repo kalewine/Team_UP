@@ -78,7 +78,7 @@ app.post('/removePlayer', (req, res) => {
 
 
 app.post('/selectedPlayers', (req, res) => {
-    
+    playerArray.remove({}, { multi: true});
     let players = req.body;
     players.forEach(player => playerArray.insert(player))
     
@@ -87,7 +87,7 @@ app.post('/selectedPlayers', (req, res) => {
 app.get('/getPlayersArray', (req, res) => {
     console.log('Get Players Array requested' )
     
-    playerDatabase.find({}, (err, data) => {
+    playerArray.find({}, (err, data) => {
         if(err){
             console.log(err)
             res.end();
