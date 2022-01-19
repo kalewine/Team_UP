@@ -24,5 +24,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "nedb": "^1.8.0"
+  }, 
+  "engines": {
+    "node": "16.13.1"
   }
 }
