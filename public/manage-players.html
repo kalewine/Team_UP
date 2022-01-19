@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./resources/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title>Player Pool</title>
 </head>
@@ -33,7 +33,7 @@
                 
                 <!-- Edit Rating -->
                     <div class="rating-positioner">
-                        <img src="better-label.png" class="better-rating"/>                    
+                        <img src="./resources/better-label.png" class="better-rating"/>                    
                         <section class="rating-selection">
                             <input type="radio" id="edit-one" name="edit-rating" value="1">
                             <label for="edit-one" class="rating-label">1</label>
@@ -47,27 +47,27 @@
                             <label for="edit-five" class="rating-label">5</label>
                             <div class="rating-selector" id="edit-rating-selector"/></div>
                         </section>
-                        <img src="worse-label.png" class="worse-rating"/>     
+                        <img src="./resources/worse-label.png" class="worse-rating"/>     
                     </div>
                 </form>
     
                 <!-- Delete Player -->
                 <div id='delete-section'>
-                    <img class="trash" src="delete.png" />
+                    <img class="trash" src="./resources/delete.png" />
                 </div>
     
                 <!-- Delete Modal  -->
                 <section class="message-modal" id="delete-modal">
                     <p>Are you sure you want to delete this player?</p>
                     <div class="message-modal-btns">
-                        <button class="message-options" id="no">No, edit this player instead.</button>
-                        <button class="message-options" id="yes">Yes, delete this player.</button>
+                        <button class="manage-btns manage-cancel" id="no">No, don't delete this player.</button>
+                        <button class="manage-btns" id="confirm-delete">Yes, delete this player.</button>
                     </div>
                 </section>
     
                 <!-- Submit Edit Player Form -->
                 <div class="position-btns">
-                    <button class="manage-btns manage-cancel" id="cancel-edit" onclick="toggleEditModal()">Cancel</button>
+                    <button class="manage-btns manage-cancel" id="cancel-edit" onclick="cancelEditPlayer()">Cancel</button>
                     <button class="manage-btns manage-submit" type="submit" form="edit-player">Save</button>  
                 </div>
             </div>
@@ -93,7 +93,7 @@
                     
                 <!-- Rating Input-->
                     <div class="rating-positioner">
-                        <img src="better-label.png" class="better-rating"/>   
+                        <img src="./resources/better-label.png" class="better-rating"/>   
                         <section class="rating-selection">
                             <input type="radio" id="one" name="rating" value="1" checked>
                             <label for="one" class="rating-label">1</label>
@@ -107,17 +107,16 @@
                             <label for="five" class="rating-label">5</label>
                             <div class="rating-selector" id="rating-selector"/></div>
                         </section>
-                        <img src="worse-label.png" class="worse-rating"/>  
+                        <img src="./resources/worse-label.png" class="worse-rating"/>  
                     </div>
                 </form>
                 <!-- Already Exists Message Modal -->
                 <section class="message-modal" id="duplicate-msg"> 
-                    <p>A player with the name <span id="duplicate-name"></span> already exists. Would you like to edit the existing player instead?</p>
-                    <div class="message-modal-btns">
-                        <button class="message-options manage-cancel" id="no-thanks">Continue to Add Player</button>
-                        <button class="message-options manage-submit" id="yes-edit">Edit player</button>
+                    <p>A player with the name <span id="duplicate-name"></span> already exists.</p>
+                    
+                    <button class="message-options" id="ok">Thanks for the heads up!</button>
                         
-                    </div>
+                    
                 </section>
                 <!-- Submit Add Player Form -->
                 <div class="position-btns">
@@ -148,7 +147,7 @@
     </section>
     <section id="player-pool" class="player-pool">
         
-        <img id="add-btn" onclick="toggleAddModal()" src="add-btn.png" alt=""> 
+        <img id="add-btn" onclick="toggleAddModal()" src="./resources/add-btn.png" alt=""> 
       
     </section>
    

@@ -1,24 +1,79 @@
 const teamNumber = async() => {
     const response = await fetch('/sendTeamsNumber'); 
-    const teamsNumber = await response.json();
-    let number = teamsNumber[0]
+    const numData = await response.json();
+    let number = numData[0].teamsNumber;
     sortPlayers(number);
+    setTeamName(number)
 }
 
 teamNumber()
 
-// Teams
-let teams = [];
-
-// Generate number of teams
-let generateTeams = (maleData, femaleData, number) => {
+// Display Teams
+const displayTeams = (teamData) => {
+    console.log(teamNames)
+    let teamNumber = 1;
+    let columnPositioner = document.getElementById('column-positioner');
     
-    let numberOfTeams= number;
-    for(let i=1; i <= numberOfTeams; i++){
-        teams.push([]);
+    // // Create header row
+    for(let team in teamData){
+        let nameContainer = document.createElement('div');
+        let teamName = document.createElement('h1');
+        let nameInput = document.createElement('input');
+        let column = document.createElement('div');
+        let editIcon = document.createElement('i');
+        
+        nameContainer.setAttribute('class', 'name-container team-' + teamNumber + '-color')
+        
+        teamName.setAttribute('class', 'team-name');
+        teamName.setAttribute('id', 'team-' + teamNumber + '-name')
+        teamName.setAttribute('onclick', `editTeamName(${teamNumber})`);
+        nameInput.setAttribute('class', 'name-input');
+        nameInput.setAttribute('id', 'name-input-' + teamNumber)
+        nameInput.setAttribute('value', 'Team ' + teamNumber)
+        editIcon.setAttribute('class', 'fas fa-pen edit-name-pen');
+        column.setAttribute('id', 'team-' + teamNumber);
+        column.setAttribute('class', "team-column")
+        teamName.innerHTML = (teamNames[teamNumber-1]);
+        
+       
+        nameContainer.appendChild(teamName);
+        nameContainer.appendChild(editIcon);
+        nameContainer.appendChild(nameInput);
+        column.appendChild(nameContainer);
+        columnPositioner.appendChild(column);
+       
+        teamData[team].forEach(player => {
+            let teamPlayer = document.createElement('div');
+            teamPlayer.setAttribute('class', 'team-player team-' + teamNumber + '-player rating-' + player.rating);
+            teamPlayer.setAttribute('onclick', 'selectPlayer(this)');
+            teamPlayer.setAttribute('id', player._id);
+            let playerName= document.createElement('div');
+            let playerLastName = document.createElement('p');
+            let playerFirstName = document.createElement('p');
+            let playerRating = document.createElement('p');
+            playerName.setAttribute('class', 'player-name')
+            playerLastName.setAttribute('class', 'player-last-name');
+            playerFirstName.setAttribute('class', 'player-first-name');
+            playerRating.setAttribute('class', 'player-rating');
+            playerFirstName.innerText = player.firstName;
+            playerLastName.innerText = player.lastName; 
+            playerRating.innerText = player.rating;
+            playerName.appendChild(playerFirstName);
+            playerName.appendChild(playerLastName);
+            teamPlayer.appendChild(playerName);
+            teamPlayer.appendChild(playerRating);
+            let teams = document.getElementById('team-' + teamNumber); 
+            teams.appendChild(teamPlayer);
+            
+        })
+        
+        teamNumber++
+        
+        
     }
-    buildTeams(maleData, femaleData);
+   storeTeams(teams)
 }
+    
 
 // Generate team
 const buildTeams = (maleData, femaleData) => {
@@ -60,15 +115,22 @@ const buildTeams = (maleData, femaleData) => {
      
      snakeSelection(maleData, "male", true);
      snakeSelection(femaleData, "female", false);
-    //  teams.forEach(team => team.sort((a, b) => {
-    //      return a.rating-b.rating
-    //  }))
-     
+    
      displayTeams(teams);
 };
+// Teams
+let teams = [];
 
 
-
+// Generate number of teams
+let generateTeams = (maleData, femaleData, number) => {
+    
+    let numberOfTeams= number;
+    for(let i=1; i <= numberOfTeams; i++){
+        teams.push([]);
+    }
+    buildTeams(maleData, femaleData);
+}
 
 // Sort by gender then strength
 const sortPlayers = async(number) => {
@@ -91,87 +153,74 @@ const sortPlayers = async(number) => {
  generateTeams(males, females, number);
 }
 
-// Display teams
-const displayTeams = (teamData) => {
-    let teamNumber = 1;
-    let columnPositioner = document.getElementById('column-positioner');
-    
-    // Create header row
-    for(let team in teamData){
-        let nameContainer = document.createElement('div');
-        let teamName = document.createElement('h1');
-        let nameInput = document.createElement('input');
-        let column = document.createElement('div');
-        let editIcon = document.createElement('i');
-        
-        nameContainer.setAttribute('class', 'name-container team-' + teamNumber + '-color')
-        
-        teamName.setAttribute('class', 'team-name');
-        teamName.setAttribute('id', 'team-' + teamNumber + '-name')
-        teamName.setAttribute('onclick', `editTeamName(${teamNumber})`);
-        nameInput.setAttribute('class', 'name-input');
-        nameInput.setAttribute('id', 'name-input-' + teamNumber)
-        nameInput.setAttribute('value', 'Team ' + teamNumber)
-        editIcon.setAttribute('class', 'fas fa-pen edit-name-pen');
-        column.setAttribute('id', 'team-' + teamNumber);
-        column.setAttribute('class', "team-column")
-        teamName.innerHTML = ("Team " + teamNumber);
-        
-       
-        nameContainer.appendChild(teamName);
-        nameContainer.appendChild(editIcon);
-        nameContainer.appendChild(nameInput);
-        column.appendChild(nameContainer);
-        columnPositioner.appendChild(column);
-       
-        teamData[team].forEach(player => {
-            let teamPlayer = document.createElement('div');
-            teamPlayer.setAttribute('class', 'team-player team-' + teamNumber + '-player rating-' + player.rating);
-            teamPlayer.setAttribute('onclick', 'selectPlayer(this)');
-            teamPlayer.setAttribute('id', player._id);
-            let playerName= document.createElement('div');
-            let playerLastName = document.createElement('p');
-            let playerFirstName = document.createElement('p');
-            let playerRating = document.createElement('p');
-            playerName.setAttribute('class', 'player-name')
-            playerLastName.setAttribute('class', 'player-last-name');
-            playerFirstName.setAttribute('class', 'player-first-name');
-            playerRating.setAttribute('class', 'player-rating');
-            playerFirstName.innerText = player.firstName;
-            playerLastName.innerText = player.lastName; 
-            playerRating.innerText = player.rating;
-            playerName.appendChild(playerFirstName);
-            playerName.appendChild(playerLastName);
-            teamPlayer.appendChild(playerName);
-            teamPlayer.appendChild(playerRating);
-            let teams = document.getElementById('team-' + teamNumber); 
-            teams.appendChild(teamPlayer);
-            
-        })
-        
-        teamNumber++
-        
+
+
+// Store teams in database
+const storeTeams = async (teamData) => {
+   
+    const teamOptions = {
+        method: 'POST', 
+        body: JSON.stringify(teamData),
+        headers: {
+            "Content-Type": "application/json"
+        }
     }
+
+    await fetch('/storeTeams', teamOptions)
 }
 
-// Edit team names
-let swappingPlayers = [];
 
-let editTeamName = (teamNumber) => {
+
+// Team Names
+
+const teamNames = [];
+// Set team names based on team number 
+const setTeamName = async (num) => {
+    for(let i=1; i <= num; i++){
+        teamNames.push('Team ' + i)
+    }
+    let storeNameData = {teamNames};
+    const storingName = {
+        method: 'POST', 
+        body: JSON.stringify(storeNameData),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }
+
+    await fetch('/storeNames', storingName)
+}
+
+
+let editTeamName =  (teamNumber) => {
     let input = document.getElementById(`name-input-${teamNumber}`);
     input.style.display = 'block';
+    input.focus();
+    input.select();
     let name = document.getElementById(`team-${teamNumber}-name`);
-    let updateName = (e) => {
+    let updateName = async (e) => {
         e.preventDefault;
-        
-        name.innerText = e.target.value; 
+        let newName = e.target.value;
+        name.innerText = newName;
         input.style.display = 'none';
-    }
-    input.addEventListener('change', updateName);
+        teamNames.splice(teamNumber-1, 1, newName)
+        let storeNameData = {teamNames};
+        const storingName = {
+            method: 'POST', 
+            body: JSON.stringify(storeNameData),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }
     
+        await fetch('/storeNames', storingName)
+    }
+    input.addEventListener('focusout', updateName);
+    input.addEventListener('change', updateName);
 }
 
 // Edit teams
+let swappingPlayers = [];
 let swapping = false;
 // Select player to swap
 let selectPlayer = (selected) => {
@@ -191,6 +240,7 @@ let queuePlayer = (playerData) => {
     let teamDisplay = document.getElementById('team-display');
     let swapQueue = document.createElement('div');
     swapQueue.setAttribute('id', 'queue');
+
     
     let queueText = document.createElement('p');
     queueText.setAttribute('class', 'queue-text')
@@ -210,6 +260,7 @@ let queuePlayer = (playerData) => {
     playerFirstName.setAttribute('class', 'player-first-name');
     playerRating.setAttribute('class', 'player-rating');
     cancel.setAttribute('class', 'cancel');
+    cancel.setAttribute('onclick', 'cancelSwap()')
     cancel.insertAdjacentHTML('afterbegin', 'X');
 
     
@@ -257,8 +308,11 @@ let confirmSwap = (playerData) => {
     let queue = document.getElementById('queue');
     queue.style.display = "none";
     
-    let teamDisplay = document.getElementById('team-display');
+
     let confirmSwap = document.createElement('div');
+    // hide background
+    let teamDisplay = document.getElementById('team-display')
+    teamDisplay.classList.add('hide-teams');
     teamDisplay.insertAdjacentElement('afterbegin', confirmSwap);
     confirmSwap.setAttribute('id', 'confirm-swap');
     let queuedPlayer = document.getElementById('queued-player');
@@ -316,7 +370,7 @@ let cancelSwap = () => {
 }
 
 
-let swapPlayers = () => { 
+let swapPlayers = async() => { 
     let p1Index;
     let p2Index;
     let p1Data; 
@@ -344,6 +398,7 @@ let swapPlayers = () => {
 
     teams[p1OrigTeam].splice(p1Index, 1, p2Data);
     teams[p2OrigTeam].splice(p2Index, 1, p1Data);
+    
     resetDisplay();
     displayTeams(teams);
     swappingPlayers = [];
@@ -353,9 +408,15 @@ let swapPlayers = () => {
 
 let resetDisplay= () => {
     let swapScreen = document.getElementById('confirm-swap');
-    swapScreen.remove();
+    if(swapScreen !== null){
+       swapScreen.remove(); 
+    }
+    let teamDisplay = document.getElementById('team-display');
+    teamDisplay.classList.remove('hide-teams');
+    
     let queue = document.getElementById('queue');
     queue.remove();
+      
     let columnPositioner = document.getElementById('column-positioner');
     while (columnPositioner.firstChild){
         columnPositioner.removeChild(columnPositioner.firstChild);

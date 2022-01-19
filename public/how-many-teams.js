@@ -2,7 +2,6 @@ const teamNumber =  async() => {
     // Get playersArray from server
     const getPlayersArray = await fetch('/getPlayersArray'); 
     const playerData = await getPlayersArray.json();
-    console.log(playerData)
     let twoTeams = Math.floor(playerData.length/2);
     let fourTeams = Math.floor(playerData.length/4);
     displayOptions(twoTeams, fourTeams)
@@ -19,11 +18,11 @@ const displayOptions = (twoTeams, fourTeams) => {
 
 // Select number of teams 
 const selectTeamsNumber = async(number) => {
-    let numberArray = [];
-    numberArray.push(number)
+    let storingNum = {teamsNumber: number}; 
+    console.log(storingNum)
     const teamsNumberOptions = {
         method: 'POST', 
-        body: JSON.stringify(numberArray),
+        body: JSON.stringify(storingNum),
         headers: {
             "Content-Type": "application/json"
         }

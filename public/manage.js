@@ -76,16 +76,21 @@ const displayPlayerPool = async(sortFunction) => {
 }
 
 
+
 // Sorting functions
+let sortFirst = document.getElementById('sort-first-manage');
+let sortLast = document.getElementById('sort-last-manage');
 let firstNameSort = (data) => {
     data.sort((a, b) => a.firstName.localeCompare(b.firstName))
     firstName = true;
+    sortFirst.checked = true;
     return data
 } 
 
 let lastNameSort = (data) => {
     data.sort((a, b) => a.lastName.localeCompare(b.lastName))
     firstName = false;
+    sortLast.checked = true;
     return data
 } 
 
@@ -95,8 +100,6 @@ let lastNameSort = (data) => {
 //     return data
 // } 
 // Sort toggle switch 
-let sortFirst = document.getElementById('sort-first-manage');
-let sortLast = document.getElementById('sort-last-manage');
 sortFirst.addEventListener('click', async(e) => {
     displayPlayerPool(firstNameSort)
 })
@@ -127,11 +130,12 @@ let toggleEditModal = () => {
 
 // Edit player
 let editPlayer = async(selection) => {
-    
     // Send player Id to server to find player 
     let _id;
+
     typeof selection === "object" ? _id = selection.id : _id = selection;
     let playerId = {_id}; 
+    
     const options = {
         method: 'Post', 
         body: JSON.stringify(playerId),
@@ -194,16 +198,16 @@ editForm.addEventListener('submit', async (e) => {
 let toggleAddModal = () =>  {
     // Open add modal
     let modalBackground = document.getElementById('manage-modals');
-    let addPlayerForm = document.getElementById('add-player-form');
+    let addPlayer = document.getElementById('add-player-form');
     let playerPool = document.getElementById('player-pool')
     if(modalBackground.style.display == ('flex')){
-        modalBackground.style.display = ('none')
-        addPlayerForm.style.display = ('none');
+        modalBackground.style.display = ('none');
+        addPlayer.style.display = ('none');
         playerPool.classList.remove("hide-background")
     }else {
         window.scrollTo(0,0);
-        modalBackground.style.display = ('flex')
-        addPlayerForm.style.display = ('flex');
+        modalBackground.style.display = ('flex');
+        addPlayer.style.display = ('flex');
         playerPool.classList.add('hide-background');
     }
 }
@@ -213,7 +217,7 @@ let toggleAddModal = () =>  {
 let addPlayerForm = document.getElementById('new-player');
 let lastNameField = document.getElementById('last-name');
 let firstNameField = document.getElementById('first-name');
-let duplicate = false; 
+let duplicate; 
 let playerId;
 
 addPlayerForm.addEventListener('submit', async (e) => {
@@ -257,6 +261,8 @@ const duplicateCheck = async (e) => {
             playerId = playerData[players]._id;
             duplicateMsg(firstName, lastName, playerId)
             return
+            }else {
+            (duplicate = false)
             }
         }
     }
@@ -266,62 +272,67 @@ lastNameField.addEventListener('input', duplicateCheck);
 firstNameField.addEventListener('input', duplicateCheck);
 
 // Show duplicate message 
-const duplicateMsg = (firstName, lastName, playerId) => {
+const duplicateMsg = (firstName, lastName, id) => {
     let message = document.getElementById('duplicate-msg');
     message.style.display = "flex"
     let duplicateName = document.getElementById('duplicate-name');
     duplicateName.innerText =  `'${firstName} ${lastName}'`;
-    let no = document.getElementById('no-thanks');
-    no.addEventListener('click', e => {
-      message.style.display = "none";
-    })
-    let edit = document.getElementById('yes-edit');
-    edit.addEventListener('click', e => {
+    // dismiss duplicate message
+    let ok = document.getElementById('ok');
+    ok.addEventListener('click', e => {
         message.style.display = "none";
         addPlayerForm.reset();
         toggleAddModal();
-        editPlayer(playerId);
     })
-
 }
 
+
 // Cancel add player 
+
 let cancelAddPlayer = () => {
     addPlayerForm.reset();
     toggleAddModal();
 }
 
+// Cancel edit player 
+let cancelEditPlayer = () => {
+    toggleEditModal();
+}
+
 // Delete player
+let modal = document.getElementById('delete-modal');
 let deleteBtn = document.getElementById('delete-section');
 deleteBtn.addEventListener('click', async (e) => {
     e.preventDefault(); 
     // Alert user of action
-    let modal = document.getElementById('delete-modal');
+   
     modal.style.display = "flex";
-    // Handle deletion
-    let yes = document.getElementById('yes');
-    yes.addEventListener('click', async(e) => {
-         // Capture player Id
-        let playerId = document.getElementById('player-id').innerHTML;
-        let removePlayer = {playerId: playerId};
-        
-        // Send player information to the database
-        const options = {
-            method: 'Post', 
-            body: JSON.stringify(removePlayer),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }
-        await fetch('/removePlayer', options);
-        displayPlayerPool(firstNameSort)
-        editForm.reset();
-        modal.style.display = "none";
-        toggleEditModal();
-    })
-    // Handle cancelation
-    let no = document.getElementById('no');
-    no.addEventListener('click', async(e) => {
-        modal.style.display = "none";
-    })
+   
 })
+
+ // Handle deletion
+ let confirmDelete = document.getElementById('confirm-delete');
+ confirmDelete.addEventListener('click', async(e) => {
+      // Capture player Id
+     let playerId = document.getElementById('player-id').innerHTML;
+     let removePlayer = {playerId: playerId};
+     
+     // Send player information to the database
+     const options = {
+         method: 'Post', 
+         body: JSON.stringify(removePlayer),
+         headers: {
+             "Content-Type": "application/json"
+         }
+     }
+     await fetch('/removePlayer', options);
+     displayPlayerPool(firstNameSort)
+     editForm.reset();
+     modal.style.display = "none";
+     toggleEditModal();
+ })
+ // Handle cancelation
+ let no = document.getElementById('no');
+ no.addEventListener('click', async(e) => {
+     modal.style.display = "none";
+ })

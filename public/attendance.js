@@ -144,7 +144,7 @@ selectPlayers.addEventListener('submit', async (e) => {
         }
     }
 
-    const players = await fetch('/selectedPlayers', playerOptions).then(
+    const players = await fetch('/createPlayersArray', playerOptions).then(
        window.location.assign('how-many-teams.html') 
     )
     
