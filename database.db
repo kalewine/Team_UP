@@ -15,15 +15,8 @@
 {"firstName":"Melissa","lastName":"Seward","gender":"female","rating":"2","_id":"iP1vo8lijrvbqMyP"}
 {"firstName":"Peter","lastName":"Alewine","gender":"male","rating":"2","_id":"k5wmvGzG325jheRJ"}
 {"firstName":"Khris","lastName":"Kirk","gender":"female","rating":"2","_id":"l3mlklCFUerAuFgA"}
+{"firstName":"Rachel","lastName":"Binkley-Vance","gender":"female","rating":"2","_id":"mXM7XzBoB4IUpjfp"}
 {"firstName":"Shelby","lastName":"Payne","gender":"female","rating":"1","_id":"nOfkMKpphgshE7os"}
-{"firstName":"Chris","lastName":"Billman","gender":"male","rating":"1","_id":"nTlnIGMhc8ETsa3y"}
 {"firstName":"Jamie","lastName":"Cone","gender":"female","rating":"1","_id":"oE7v9BN3a3IXMSC5"}
 {"firstName":"Fish ","lastName":"Smith","gender":"male","rating":"2","_id":"oryQ4D4G1kINHXTW"}
 {"firstName":"Brandon","lastName":"Loggins","gender":"male","rating":"1","_id":"vt5Xg8SRCSpr7J2I"}
-{"firstName":"Rachel","lastName":"Binkley-Vance","gender":"female","rating":"2","_id":"HuKOqY0eCm5KThfO"}
-{"firstName":"Rachel","lastName":"Binkley-Vance","gender":"female","rating":"2","_id":"HuKOqY0eCm5KThfO"}
-{"$$deleted":true,"_id":"HuKOqY0eCm5KThfO"}
-{"firstName":"Rachel","lastName":"Binkley-Vance","gender":"female","rating":"1","_id":"zXsx8hiUCg4q4VDG"}
-{"$$deleted":true,"_id":"zXsx8hiUCg4q4VDG"}
-{"firstName":"Rachel","lastName":"Binkley-Vance","gender":"female","rating":"2","_id":"mXM7XzBoB4IUpjfp"}
-{"$$deleted":true,"_id":"nTlnIGMhc8ETsa3y"}
