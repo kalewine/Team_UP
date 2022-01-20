@@ -1,21 +1,26 @@
 // // ATTENDANCE 
 // Keeping track of checked boxes
 let selected = []; 
-let storeChecks = (data) => {
-    let selectedFirstName = data.parentElement.nextElementSibling;
-    let selectedLastName = selectedFirstName.nextElementSibling;
-    selectedFirstName.classList.toggle('selected')
-    selectedLastName.classList.toggle('selected')
-    // console.log(data.value)
-    // console.log(data.checked)
-    if(data.checked){
-        selected.push(data.value)
+
+let selectPlayer = (selectedRow) => {
+    let checkbox = selectedRow.firstChild.firstChild;
+    checkbox.checked == false ? checkbox.checked = true : checkbox.checked = false;
+    let selectedFirstName = selectedRow.children[1]; 
+    let selectedLastName = selectedRow.children[2]; 
+    selectedFirstName.classList.toggle('selected');
+    selectedLastName.classList.toggle('selected');
+    if(checkbox.checked){
+        selected.push(checkbox.value)
     }else{
-       let remove = selected.findIndex(item => item == data.value)
+       let remove = selected.findIndex(item => item == checkbox.value)
        selected.splice(remove, 1);
     }
-    
-    
+   
+}
+
+
+let selectedByCheck = (data) => {
+    data.checked == true ? data.checked = false : data.checked = true;
 }
 
 // Display player list
@@ -41,19 +46,7 @@ const displayPlayers =  async(sortFunction) => {
     if(rows.length !== 0){
         rows.forEach(element => element.remove());
         playerList.forEach(playerData => {
-            let row = playerTable.insertRow();
-            row.setAttribute('class', 'table-row');
-            let selectionCell = row.insertCell();
-            let checkbox = document.createElement('input');
-            checkbox.type = "checkbox";
-            checkbox.setAttribute ('onclick', 'storeChecks(this)');
-            checkbox.id = playerData._id + "-check";
-            checkbox.name = "players";
-            selectionCell.appendChild(checkbox);
-            let firstName = row.insertCell();
-            firstName.innerHTML = playerData.firstName;
-            let lastName = row.insertCell();
-            lastName.innerHTML = playerData.lastName;
+            buildRows(playerTable, playerData)
         })
         selected.forEach(checked => {
             let checkedBox = document.getElementById(checked + "-check");
@@ -65,23 +58,12 @@ const displayPlayers =  async(sortFunction) => {
         })
     }else{
         playerList.forEach(playerData => {
-                let row = playerTable.insertRow();
-                row.setAttribute('class', 'table-row');
-                let selectionCell = row.insertCell();
-                let checkbox = document.createElement('input');
-                checkbox.type = "checkbox";
-                checkbox.setAttribute('class','attendance-check')
-                checkbox.value = playerData._id;
-                checkbox.name = "players";
-                checkbox.setAttribute ('onclick', 'storeChecks(this)');
-                selectionCell.appendChild(checkbox);
-                let firstName = row.insertCell();
-                firstName.innerHTML = playerData.firstName;
-                let lastName = row.insertCell();
-                lastName.innerHTML = playerData.lastName;
+            buildRows(playerTable,playerData)
         })   
     }
 }
+
+
 
 // Sorting arrows
 let firstArrow = document.getElementById("first-name-arrow");
@@ -104,6 +86,25 @@ let lastNameSort = (data) => {
     return data
 } 
 
+// Build player rows
+let buildRows = (playerTable, playerData) => {
+    let row = playerTable.insertRow();
+    row.setAttribute('class', 'table-row');
+    row.setAttribute('onclick', 'selectPlayer(this)')
+    let selectionCell = row.insertCell();
+    let checkbox = document.createElement('input');
+    checkbox.type = "checkbox";
+    checkbox.setAttribute('class','attendance-check')
+    checkbox.setAttribute('id',playerData._id + "-check")
+    checkbox.value = playerData._id;
+    checkbox.name = "players";
+    checkbox.setAttribute ('onclick', 'selectedByCheck(this)');
+    selectionCell.appendChild(checkbox);
+    let firstName = row.insertCell();
+    firstName.innerHTML = playerData.firstName;
+    let lastName = row.insertCell();
+    lastName.innerHTML = playerData.lastName;
+}
 
 
 // Player pool
@@ -111,8 +112,8 @@ let playerArray = [];
 
 
 // Select players
-let selectPlayers = document.getElementById('player-data');
-selectPlayers.addEventListener('submit', async (e) => {
+let selectedPlayers = document.getElementById('player-data');
+selectedPlayers.addEventListener('submit', async (e) => {
     e.preventDefault();
    
     let getPlayers = ()  => {

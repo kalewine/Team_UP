@@ -1,10 +1,2 @@
-{"team":[{"firstName":"John ","lastName":"Bonas","gender":"male","rating":"1","_id":"2admg1hp2VNN300b"},{"firstName":"Katie","lastName":"Krones","gender":"female","rating":"2","_id":"0ZzduXNnDnC8LKkU"},{"firstName":"Kayla","lastName":"Alewine","gender":"female","rating":"2","_id":"OnOwTE5Rmxo7p2Tm"}],"_id":"0"}
-{"team":[{"firstName":"Josh","lastName":"Leister","gender":"male","rating":"1","_id":"c4ooGYBBfWROHnoi"},{"firstName":"Jamie","lastName":"Cone","gender":"female","rating":"1","_id":"oE7v9BN3a3IXMSC5"},{"firstName":"Khris","lastName":"Kirk","gender":"female","rating":"2","_id":"l3mlklCFUerAuFgA"}],"_id":"1"}
-{"team":[{"firstName":"Brandon","lastName":"Loggins","gender":"male","rating":"1","_id":"vt5Xg8SRCSpr7J2I"},{"firstName":"Keith","lastName":"Olds","gender":"male","rating":"3","_id":"7y6sraQyCZRgLEos"},{"firstName":"Hannah","lastName":"Cash","gender":"female","rating":"1","_id":"USOOCWugD3M00fbx"},{"firstName":"Kaley","lastName":"Peeke","gender":"female","rating":"4","_id":"MCyi3MXCamUY7Xf6"}],"_id":"2"}
-{"team":[{"firstName":"Andrew","lastName":"Strum","gender":"male","rating":"2","_id":"M96eixXVel1PU5ZQ"},{"firstName":"Fish ","lastName":"Smith","gender":"male","rating":"2","_id":"oryQ4D4G1kINHXTW"},{"firstName":"Jess","lastName":"Binkley-Vance","gender":"female","rating":"1","_id":"Rupdvkp5NB7WyDkk"}],"_id":"3"}
-{"$$deleted":true,"_id":"0"}
-{"$$deleted":true,"_id":"1"}
-{"$$deleted":true,"_id":"2"}
-{"$$deleted":true,"_id":"3"}
 {"team":[{"firstName":"Brandon","lastName":"Loggins","gender":"male","rating":"1","_id":"vt5Xg8SRCSpr7J2I"},{"firstName":"Hannah","lastName":"Cash","gender":"female","rating":"1","_id":"USOOCWugD3M00fbx"},{"firstName":"Jamie","lastName":"Cone","gender":"female","rating":"1","_id":"oE7v9BN3a3IXMSC5"}],"_id":"0"}
 {"team":[{"firstName":"Andrew","lastName":"Strum","gender":"male","rating":"2","_id":"M96eixXVel1PU5ZQ"},{"firstName":"Jess","lastName":"Binkley-Vance","gender":"female","rating":"1","_id":"Rupdvkp5NB7WyDkk"}],"_id":"1"}
