@@ -1,5 +1,8 @@
-{"firstName":"Andrew","lastName":"Strum","gender":"male","rating":"2","_id":"M96eixXVel1PU5ZQ"}
+{"firstName":"Katie","lastName":"Krones","gender":"female","rating":"2","_id":"0ZzduXNnDnC8LKkU"}
+{"firstName":"Keith","lastName":"Olds","gender":"male","rating":"3","_id":"7y6sraQyCZRgLEos"}
 {"firstName":"Jess","lastName":"Binkley-Vance","gender":"female","rating":"1","_id":"Rupdvkp5NB7WyDkk"}
-{"firstName":"Hannah","lastName":"Cash","gender":"female","rating":"1","_id":"USOOCWugD3M00fbx"}
-{"firstName":"Jamie","lastName":"Cone","gender":"female","rating":"1","_id":"oE7v9BN3a3IXMSC5"}
-{"firstName":"Brandon","lastName":"Loggins","gender":"male","rating":"1","_id":"vt5Xg8SRCSpr7J2I"}
+{"firstName":"Josh","lastName":"Leister","gender":"male","rating":"1","_id":"c4ooGYBBfWROHnoi"}
+{"$$deleted":true,"_id":"0ZzduXNnDnC8LKkU"}
+{"$$deleted":true,"_id":"7y6sraQyCZRgLEos"}
+{"$$deleted":true,"_id":"Rupdvkp5NB7WyDkk"}
+{"$$deleted":true,"_id":"c4ooGYBBfWROHnoi"}

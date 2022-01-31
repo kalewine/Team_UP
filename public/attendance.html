@@ -18,27 +18,28 @@
         
         <form  id="player-data"></form>
        
-        <table id="player-table">
+        <table >
             <thead>
                 <tr class="header-row">
                     <th id="spacer-check"><input type="checkbox"></th>
                     <th class="header-title" onclick="displayPlayers(firstNameSort)">First Name <i class="fas fa-arrow-down" id="first-name-arrow"></i></th>
                     <th class="header-title" onclick="displayPlayers(lastNameSort)">Last Name <i class="fas fa-arrow-down" id="last-name-arrow"></i></th>
                 </tr>
-             </thead>
+             </thead id="header-row">
+             <tbody id="table-body"></tbody>
             <!-- <tr>
                 <label for="all">Select All</label>
                 <input type="checkbox" id="select-all" name="all">
             </tr> -->
-            
+          
         </table>
-        <div class="blur-box"></div>
+        <!-- <div id="blur-box"></div>   -->
         <div class="submit-positioner">
             <button class="form-submit" id="attendance-btn" type="submit"   form="player-data">
                 <div class="btn-pos">
                     <img id="arrow-right" src="./resources/arrow.png" alt="">
                 </div>
-                <div class="btn-pos">
+                <div id="btn-text">
                     Proceed to
                     <span>Number of Teams</span>
                 </div>

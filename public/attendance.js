@@ -5,10 +5,7 @@ let selected = [];
 let selectPlayer = (selectedRow) => {
     let checkbox = selectedRow.firstChild.firstChild;
     checkbox.checked == false ? checkbox.checked = true : checkbox.checked = false;
-    let selectedFirstName = selectedRow.children[1]; 
-    let selectedLastName = selectedRow.children[2]; 
-    selectedFirstName.classList.toggle('selected');
-    selectedLastName.classList.toggle('selected');
+    selectedRow.classList.toggle('selected');
     if(checkbox.checked){
         selected.push(checkbox.value)
     }else{
@@ -41,7 +38,7 @@ const displayPlayers =  async(sortFunction) => {
     
     // Sort player data 
     sortFunction(playerList);
-    let playerTable = document.getElementById('player-table');
+    let playerTable = document.getElementById('table-body');
     let rows = [...document.getElementsByClassName('table-row')];
     if(rows.length !== 0){
         rows.forEach(element => element.remove());
@@ -50,10 +47,8 @@ const displayPlayers =  async(sortFunction) => {
         })
         selected.forEach(checked => {
             let checkedBox = document.getElementById(checked + "-check");
-            let selectedFirstName = checkedBox.parentElement.nextElementSibling;
-            let selectedLastName = selectedFirstName.nextElementSibling;
-            selectedFirstName.classList.toggle('selected')
-            selectedLastName.classList.toggle('selected')
+            let selectedRow = checkedBox.parentElement.parentElement;
+            selectedRow.classList.add('selected');
             checkedBox.checked = true;
         })
     }else{
@@ -152,6 +147,31 @@ selectedPlayers.addEventListener('submit', async (e) => {
 
 });
 
+// Observer functions
+const submit = document.querySelector('.submit-positioner');
+const attendanceBtn = document.getElementById('attendance-btn');
+const attendanceText = document.getElementById('btn-text');
+const options = {
+    threshold: 1
+}
+
+const bottomOfPageObserver = new IntersectionObserver((entries, bottomOfPageObserver) => {
+    entries.forEach(entry => {
+        if(!entry.isIntersecting){
+            
+            attendanceBtn.classList.remove("large-btn");
+            attendanceText.classList.remove("large")
+        }else {
+            attendanceBtn.classList.add('large-btn')
+            attendanceText.classList.add("large")
+
+        }
+    })
+}, options ) 
+
+
+bottomOfPageObserver.observe(submit)
+
 // Select all function
 // let selectAll = document.getElementById('select-all');
 // selectAll.addEventListener('change',  () => {
@@ -164,10 +184,6 @@ selectedPlayers.addEventListener('submit', async (e) => {
 //             player.setAttribute('checked', 'checked');
 //     }
 // });
-
-
-
-
 
 
 

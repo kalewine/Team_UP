@@ -43,7 +43,7 @@ header {
   position: fixed;
   display: flex; 
   place-content: center center;
-  width: 100%;
+  width: 100vw;
   height: 57px;
   background: var(--header-background);
   margin-bottom: 1rem;
@@ -661,14 +661,47 @@ input#five:checked ~ #rating-selector, input#edit-five:checked ~ #edit-rating-se
 }
 
 /* Event Attendance Styles */
-#player-table {
+table {
   width: 100vw;
-  margin: 3.5rem 0.2rem 0 0.2rem;
-  /* border-collapse: collapse; */
+  margin: 3.5rem 0.2rem 0 0;
+  border-collapse: collapse;
+}
+
+tbody {
+  overflow: hidden; 
 }
 
 .selected {
+  position: relative;
   font-weight: bold; 
+  /* animation: selectedColor 1s; */
+}
+
+.selected::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0; 
+  width: 100%;
+  height: 100%;
+  background: #e2ddf8;
+  animation: select 0.2s;
+  z-index: -1;
+}
+
+
+@keyframes select {
+  0% {
+    transform: translateX(-100%);
+    border-radius: 0 60px 60px 0;
+  }
+  75% {
+    border-radius: 0 60px 60px 0;
+  }
+  100% {
+    transform: translateX(0%);
+    border-radius: 0;
+  }
 }
 
 tr {
@@ -676,12 +709,12 @@ tr {
 }
 
 .table-row td {
-  border-bottom: solid 0.2px #CFCFCF;
+  border-bottom: solid 0.2px #424040;
   border-collapse: collapse;
 }
 
 .table-row td:not(:first-child){
-  border-left: solid 0.2px #CFCFCF;
+  border-left: solid 0.2px #424040;
   padding: 0.5rem 0 0.5rem 1rem;
   
 }
@@ -690,6 +723,7 @@ tr {
   width: 10%;
   text-align: center;
 }
+
 
 th {
   padding: 0.5rem;
@@ -703,7 +737,7 @@ th {
 }
 
 .header-title {
-  border-left: solid 0.2px #CFCFCF;
+  border-left: solid 0.2px #424040;
   cursor: pointer;
   color: #757575;
 }
@@ -723,15 +757,49 @@ input[type="checkbox"] {
 }
 
 .submit-positioner {
+  position: relative;
+  bottom: 0; 
+  height: 7rem;
   width: 100vw; 
   display: flex; 
   align-items: center;
-  justify-content: center;
- 
+  justify-content: flex-end;
 }
 
-#attendance-btn {
-  position: relative; 
+
+.form-submit {
+  position: fixed; 
+  bottom: 0;
+  background: var(--clickable);
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100%;
+  border: none;
+  width: 50px;
+  height: 50px;
+  margin: 1.5rem 1rem;
+  padding: 2rem;
+  display: flex; 
+  justify-content: space-around;
+  align-items: center;
+  transition: transform 1s, width 1s, border-radius 1s 0.6s;
+}
+
+
+.large-btn {
+  width: 263px;
+  height: 66px;
+  border-radius: 13px;
+  display: flex; 
+  justify-content: space-around;
+  align-items: center;
+  transition: transform 1s, width 1s;
+  transform: translateX(-20%);
+  cursor: pointer;
+}
+
+/* #attendance-btn {
+  position: fixed; 
+  bottom: 0;
   display: flex; 
   justify-content: space-around;
   align-items: center;
@@ -743,15 +811,34 @@ input[type="checkbox"] {
   height: 66px;
   margin: 2rem 0;
   padding: 0 1rem;
+
+} */
+
+#blur-box {
+  position: fixed;
+  bottom: 0; 
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,0.42107265269389005) 0%, rgba(255,255,255,0.802025033646271) 100%);
+  height: 80px;
+  width: 100vw;
+  z-index: 100;
 }
 
-
-.btn-pos {
+#btn-text {
+  position: absolute;
   display: flex;
   flex-direction: column;
+  opacity: 0;
 }
 
-.btn-pos span {
+#btn-text.large {
+  position: relative;
+  opacity: 1;
+  transition: opacity 0.5s 0.5s;
+}
+
+
+#btn-text span {
   font-weight: bold;
   font-size: 1.1rem; 
 }
