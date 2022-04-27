@@ -1129,6 +1129,15 @@ input[type="checkbox"] {
 }
 
 @media (orientation: landscape) {
+  body {
+    position: fixed;
+    overflow: hidden;
+  }
+  
+  #team-display {
+    width: 100vw;
+  }
+
  #player-swap-cont {
    flex-direction: row;
  }
