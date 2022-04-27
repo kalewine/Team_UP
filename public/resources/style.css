@@ -802,7 +802,7 @@ input[type="checkbox"] {
   display: flex; 
   justify-content: space-around;
   align-items: center;
-  transition: transform 1s, width 1s, border-radius 1s 0.6s;
+  transition: transform 0.5s, width 0.5s, border-radius 0.5s 0.1s;
 }
 
 
@@ -813,7 +813,7 @@ input[type="checkbox"] {
   display: flex; 
   justify-content: space-around;
   align-items: center;
-  transition: transform 1s, width 1s;
+  transition: transform 0.5s, width 0.5s;
   transform: translateX(-20%);
   cursor: pointer;
 }
