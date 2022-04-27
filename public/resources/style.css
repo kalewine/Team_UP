@@ -1073,6 +1073,12 @@ input[type="checkbox"] {
   justify-content: center;
 }
 
+#player-swap-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .swap-text {
   font-style: italic; 
   color: white;
@@ -1120,7 +1126,27 @@ input[type="checkbox"] {
 
 #arrow-positioner{
   margin: 2rem 0;
-  display: flex; 
-  justify-content: space-between;
 }
 
+@media (orientation: landscape) {
+ #player-swap-cont {
+   flex-direction: row;
+ }
+
+ #swap-question {
+   margin: 0 0 1rem 0;
+ }
+
+ #position-btn{
+  margin: 1rem 0 0 0;
+  width: 50%;
+ }
+
+ #arrow-positioner {
+   transform: rotate(90deg);
+ }
+
+ .swap-text{
+   padding-bottom: 1rem;
+ }
+}

@@ -315,6 +315,9 @@ let confirmSwap = (playerData) => {
     let teamDisplay = document.getElementById('team-display')
     teamDisplay.insertAdjacentElement('afterbegin', confirmSwap);
     confirmSwap.setAttribute('id', 'confirm-swap');
+    let playerSwap = document.createElement('div');
+    playerSwap.setAttribute('id', 'player-swap-cont'); 
+
     let queuedPlayer = document.getElementById('queued-player');
 
     let arrows = document.createElement('div');
@@ -330,10 +333,19 @@ let confirmSwap = (playerData) => {
     question.setAttribute('class', 'swap-text')
     question.setAttribute('id', 'swap-question')
     question.innerHTML = 'Swap these Players?';
+    
+    let queuedCont = document.createElement('div');
+    let playerDataCont = document.createElement('div');
+    queuedCont.setAttribute('class', "player-cont");
+    playerDataCont.setAttribute('class', "player-cont");
+    queuedCont.appendChild(queuedPlayer);
+    playerDataCont.appendChild(playerData);
+
     confirmSwap.appendChild(question);
-    confirmSwap.appendChild(queuedPlayer);
-    confirmSwap.appendChild(arrows);
-    confirmSwap.appendChild(playerData);
+    playerSwap.appendChild(queuedCont);
+    playerSwap.appendChild(arrows);
+    playerSwap.appendChild(playerDataCont);
+    confirmSwap.appendChild(playerSwap);
    
     let addParagraph = (player) => {
         let teamNum = player.classList[1].slice(5,6);

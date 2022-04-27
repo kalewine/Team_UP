@@ -4,7 +4,6 @@ let selected = [];
 
 let selectPlayer = (selectedRow) => {
     let checkbox = selectedRow.firstChild.firstChild;
-    console.log(selectedRow)
     let rowToStyle = document.getElementById(`${selectedRow.id}`); 
     
     checkbox.checked == false ? checkbox.checked = true : checkbox.checked = false;
