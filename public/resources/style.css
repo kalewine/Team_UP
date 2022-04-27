@@ -746,7 +746,7 @@ th {
   color: #757575;
 }
 
-#to-home-link{
+.to-home-link{
   position: fixed;
   left: 0;
   bottom: 0;
@@ -760,7 +760,7 @@ th {
   padding: 1.2rem 1rem;
 }
 
-#to-home-arrow {
+.to-home-arrow {
   transform: rotate(180deg);
   width: 2rem;
 }

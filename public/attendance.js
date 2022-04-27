@@ -158,7 +158,6 @@ const options = {
 const bottomOfPageObserver = new IntersectionObserver((entries, bottomOfPageObserver) => {
     entries.forEach(entry => {
         if(!entry.isIntersecting){
-            
             attendanceBtn.classList.remove("large-btn");
             attendanceText.classList.remove("large")
         }else {
