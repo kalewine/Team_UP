@@ -10,7 +10,6 @@ teamNumber()
 
 // Display Teams
 const displayTeams = (teamData) => {
-    console.log(teamNames)
     let teamNumber = 1;
     let columnPositioner = document.getElementById('column-positioner');
     

@@ -869,18 +869,17 @@ input[type="checkbox"] {
 }
 
 /* Team styles */
+
 #team-display {
   position: relative;
   height: 100vh;
   width: 100%;
-  border: solid red;
 }
 
 #column-positioner {
   display: flex;
-  width: fit-content;
+  width: 100%;
   height: auto; 
-  border: solid orange 4px;
 } 
 
 .team-column {
@@ -888,7 +887,6 @@ input[type="checkbox"] {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: solid darkcyan;
 }
 
 .name-container {
