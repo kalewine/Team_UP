@@ -321,7 +321,6 @@ input#sort-first-manage:checked ~ #manage-sort-selector {
   width: 100vw;
   height: 100vh;
   justify-content: center;
-  align-items: center;
   position: relative; 
   background-color:rgba(14, 14, 14, 0.71);
   z-index: 100;
@@ -336,6 +335,7 @@ input#sort-first-manage:checked ~ #manage-sort-selector {
   background-color: #fff;
   border-radius: 10px;
   padding: 2rem 1rem 1rem 1rem;
+  margin-top: 10%;
   z-index: 10; 
 }
 
