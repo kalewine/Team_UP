@@ -4,8 +4,11 @@ let selected = [];
 
 let selectPlayer = (selectedRow) => {
     let checkbox = selectedRow.firstChild.firstChild;
+    console.log(selectedRow)
+    let rowToStyle = document.getElementById(`${selectedRow.id}`); 
+    
     checkbox.checked == false ? checkbox.checked = true : checkbox.checked = false;
-    selectedRow.classList.toggle('selected');
+    rowToStyle.classList.toggle('selected');
     if(checkbox.checked){
         selected.push(checkbox.value)
     }else{
@@ -19,6 +22,30 @@ let selectPlayer = (selectedRow) => {
 let selectedByCheck = (data) => {
     data.checked == true ? data.checked = false : data.checked = true;
 }
+
+
+// Observer functions
+
+const attendanceBtn = document.getElementById('attendance-btn');
+const attendanceText = document.getElementById('btn-text');
+const options = {
+    threshold: 1
+}
+
+const bottomOfPageObserver = new IntersectionObserver((entries, bottomOfPageObserver) => {
+    entries.forEach(entry => {
+        if(!entry.isIntersecting){
+            attendanceBtn.classList.remove("large-btn");
+            attendanceText.classList.remove("large")
+        }else {
+            attendanceBtn.classList.add('large-btn')
+            attendanceText.classList.add("large")
+
+        }
+    })
+}, options ) 
+
+
 
 // Display player list
 let playerList = []; 
@@ -43,19 +70,30 @@ const displayPlayers =  async(sortFunction) => {
     if(rows.length !== 0){
         rows.forEach(element => element.remove());
         playerList.forEach(playerData => {
-            buildRows(playerTable, playerData)
+            buildRows(playerTable, playerData)   
         })
+        
+        let lastPlayer = playerList[playerList.length-1]._id;
+        let lastPlayerElement = document.getElementById(`${lastPlayer}-row`)
+        lastPlayerElement.setAttribute('id', 'last-player');
+            
         selected.forEach(checked => {
             let checkedBox = document.getElementById(checked + "-check");
             let selectedRow = checkedBox.parentElement.parentElement;
             selectedRow.classList.add('selected');
             checkedBox.checked = true;
         })
+        
     }else{
         playerList.forEach(playerData => {
             buildRows(playerTable,playerData)
-        })   
+        })
+        let lastPlayerId = playerList[playerList.length-1]._id;
+        let lastPlayerElement = document.getElementById(`${lastPlayerId}-row`)
+        lastPlayerElement.setAttribute('id', 'last-player');
     }
+    let lastPlayer = document.querySelector('#last-player');
+    bottomOfPageObserver.observe(lastPlayer)
 }
 
 
@@ -85,6 +123,7 @@ let lastNameSort = (data) => {
 let buildRows = (playerTable, playerData) => {
     let row = playerTable.insertRow();
     row.setAttribute('class', 'table-row');
+    row.setAttribute('id', playerData._id + '-row');
     row.setAttribute('onclick', 'selectPlayer(this)')
     let selectionCell = row.insertCell();
     let checkbox = document.createElement('input');
@@ -147,29 +186,7 @@ selectedPlayers.addEventListener('submit', async (e) => {
 
 });
 
-// Observer functions
-const submit = document.querySelector('.submit-positioner');
-const attendanceBtn = document.getElementById('attendance-btn');
-const attendanceText = document.getElementById('btn-text');
-const options = {
-    threshold: 1
-}
 
-const bottomOfPageObserver = new IntersectionObserver((entries, bottomOfPageObserver) => {
-    entries.forEach(entry => {
-        if(!entry.isIntersecting){
-            attendanceBtn.classList.remove("large-btn");
-            attendanceText.classList.remove("large")
-        }else {
-            attendanceBtn.classList.add('large-btn')
-            attendanceText.classList.add("large")
-
-        }
-    })
-}, options ) 
-
-
-bottomOfPageObserver.observe(submit)
 
 // Select all function
 // let selectAll = document.getElementById('select-all');
