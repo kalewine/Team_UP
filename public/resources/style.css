@@ -1026,13 +1026,12 @@ input[type="checkbox"] {
 }
 
 #queue {
-  position: absolute;
+  position: fixed;
   bottom: 0; 
   background-color: rgba(36, 32, 32, 0.62);
   width: 100vw;
   height: 100px;
   padding: 1rem;
-  margin-bottom: 1rem;
 }
 
 
