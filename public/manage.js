@@ -207,17 +207,20 @@ let toggleAddModal = () =>  {
     let modalBackground = document.getElementById('modal-screen');
     let addPlayer = document.getElementById('add-player-form');
     let playerPool = document.getElementById('player-pool')
-    if(modalBackground.style.display == ('block')){
+    if(modalBackground.style.display == ('flex')){
         modalBackground.style.display = ('none');
         addPlayer.style.display = ('none');
         playerPool.classList.remove("hide-background");
+        body.style.position = 'initial';
+        body.style.overflowY = 'initial';
         
     }else {
         window.scrollTo(0,0);
-        modalBackground.style.display = ('block');
+        modalBackground.style.display = ('flex');
         addPlayer.style.display = ('flex');
         playerPool.classList.add('hide-background');
-       
+        body.style.position = 'fixed';
+        body.style.overflowY = 'hidden';
     }
 }
 
