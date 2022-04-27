@@ -1127,8 +1127,7 @@ input[type="checkbox"] {
 
 @media (orientation: landscape) {
   body {
-    position: fixed;
-    overflow: hidden;
+    overflow-y: hidden;
   }
   
   #team-display {
