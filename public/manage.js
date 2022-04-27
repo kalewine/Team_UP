@@ -123,12 +123,14 @@ let toggleEditModal = () => {
         editPlayerForm.style.display = ('none');
         playerPool.classList.remove("hide-background");
         body.style.display = 'initial';
+        body.style.overflowY = 'initial';
     }else {
         window.scrollTo(0,0);
         modalBackground.style.display = ('flex')
         editPlayerForm.style.display = ('flex');
         playerPool.classList.add('hide-background');
         body.style.display = 'fixed';
+        body.style.overflowY = 'hidden';
     }
 }
 

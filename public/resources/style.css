@@ -327,7 +327,6 @@ input#sort-first-manage:checked ~ #manage-sort-selector {
   align-items: center;
   background-color:rgba(14, 14, 14, 0.71);
   z-index: 100;
-  overflow: hidden;
 }
 
 .manage-modal {
@@ -673,7 +672,7 @@ table {
 }
 
 tbody {
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .selected {
