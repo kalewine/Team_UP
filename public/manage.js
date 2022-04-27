@@ -115,22 +115,22 @@ displayPlayerPool(firstNameSort);
 // Toggle edit player modal
 let toggleEditModal = () => {
     let body = document.querySelector('body');
-    let modalBackground = document.getElementById('manage-modals');
+    let modalBackground = document.getElementById('modal-screen');
     let editPlayerForm = document.getElementById('edit-player-form');
     let playerPool = document.getElementById('player-pool')
     if(modalBackground.style.display == ('flex')){
         modalBackground.style.display = ('none')
         editPlayerForm.style.display = ('none');
         playerPool.classList.remove("hide-background");
-        body.style.display = 'initial';
-        body.style.overflowY = 'initial';
+        body.style.display = 'fixed';
+        body.style.overflowY = 'hidden';
     }else {
         window.scrollTo(0,0);
         modalBackground.style.display = ('flex')
         editPlayerForm.style.display = ('flex');
         playerPool.classList.add('hide-background');
-        body.style.display = 'fixed';
-        body.style.overflowY = 'hidden';
+        body.style.display = 'initial';
+        body.style.overflowY = 'initial';
     }
 }
 
@@ -204,20 +204,20 @@ editForm.addEventListener('submit', async (e) => {
 let toggleAddModal = () =>  {
     // Open add modal
     let body = document.querySelector('body');
-    let modalBackground = document.getElementById('manage-modals');
+    let modalBackground = document.getElementById('modal-screen');
     let addPlayer = document.getElementById('add-player-form');
     let playerPool = document.getElementById('player-pool')
     if(modalBackground.style.display == ('flex')){
         modalBackground.style.display = ('none');
         addPlayer.style.display = ('none');
         playerPool.classList.remove("hide-background");
-        body.style.display = 'initial';
+        
     }else {
         window.scrollTo(0,0);
         modalBackground.style.display = ('flex');
         addPlayer.style.display = ('flex');
         playerPool.classList.add('hide-background');
-        body.style.display = 'fixed';
+       
     }
 }
 
