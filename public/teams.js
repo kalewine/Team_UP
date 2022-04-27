@@ -218,17 +218,20 @@ let editTeamName =  (teamNumber) => {
     input.addEventListener('change', updateName);
 }
 
+
+
 // Edit teams
+let body = document.querySelector('body');
 let swappingPlayers = [];
 let swapping = false;
 // Select player to swap
 let selectPlayer = (selected) => {
     // Boolean check of swapping
     swapping == false ? queuePlayer(selected) : confirmSwap(selected);
-
 }
 
 let queuePlayer = (playerData) => {
+    swapping ? body.style.overflowY = "initial" : body.style.overflowY = "hidden"
     // Style first selected player
     while(playerData.firstChild){
         playerData.removeChild(playerData.firstChild)
@@ -295,7 +298,7 @@ let queuePlayer = (playerData) => {
     swapping = true;
 }
 
-let body = document.querySelector('body');
+
 
 let confirmSwap = (playerData) => {
     
