@@ -27,7 +27,7 @@ html {
 }
 
 body {
- height: 100vh;
+ height: 100vw;
 }
 
 a {
@@ -119,14 +119,15 @@ header {
 }
 
 #manage {
-  background: linear-gradient(90deg, #FFB6B6 0%, #FFD6D6 105.5%);
-
+  background: linear-gradient(90deg, #ff9cb9 0%, #FFA89C 100%);
 }
 
 /* Manage Players Styles */
 .player-pool{
   margin-top: 10rem; 
-  height: 100vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 #player-section {
@@ -226,7 +227,7 @@ input#sort-first-manage:checked ~ #manage-sort-selector {
   display: flex; 
   align-items: center;
   border-radius: 34px;
-  margin: 0.8rem 1rem 0.8rem 4rem; 
+  margin: 0.8rem; 
   width: 284px;
   height: 59px;
 }
@@ -285,8 +286,8 @@ input#sort-first-manage:checked ~ #manage-sort-selector {
 }
 
 #alpha-menu{
+  display: none;
   position: fixed; 
-  display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 1rem; 
@@ -333,7 +334,7 @@ input#sort-first-manage:checked ~ #manage-sort-selector {
   justify-content: space-evenly;
   position: absolute;
   height: 85%;
-  width: 75%;
+  width: 85%;
   background-color: #fff;
   top: 0;
   border-radius: 10px;
@@ -360,6 +361,7 @@ input#sort-first-manage:checked ~ #manage-sort-selector {
   display: flex; 
   justify-content: space-between;
   margin-top: 1rem;
+  max-width: 500px;
 }
 
 .manage-btns, .manage-cancel, .manage-submit {
@@ -392,6 +394,7 @@ input#sort-first-manage:checked ~ #manage-sort-selector {
 
 #confirm-delete {
   border: none;
+  color: #fff;
   background: #FF0000;
   
 }
@@ -617,7 +620,7 @@ input#female:checked ~ #gender-selector, input#edit-female:checked ~ #edit-gende
   border-radius: 24px;
   background: var(--clickable);
   -webkit-transition: .4s;
-  transition: 0.4s'
+  transition: 0.4s;
 }
 
 .rating-selector::before {
@@ -742,6 +745,24 @@ th {
   color: #757575;
 }
 
+#to-home-link{
+  position: absolute; 
+  display: flex;
+  place-content: center;
+  margin-top: 10%;
+  margin-left: 1rem;
+  left: 0;
+  background: var(--clickable);
+  box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+  padding: 1.2rem 1rem;
+  height: auto;
+}
+
+#to-home-arrow {
+  transform: rotate(180deg);
+  width: 3rem;
+}
 
 #first-name-arrow, #last-name-arrow {
   padding-left: 1rem;

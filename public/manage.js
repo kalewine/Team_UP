@@ -41,14 +41,15 @@ const displayPlayerPool = async(sortFunction) => {
         let playerId = player; 
         let playerObj = document.createElement('div');
         playerObj.setAttribute('class', `player-obj ${playerPool[player].gender}`);
+        playerObj.setAttribute('id', playerPool[player]._id);
+        playerObj.setAttribute('onclick', 'editPlayer(this)')
         let playerName= document.createElement('div');
         let playerLastName = document.createElement('p');
         let playerFirstName = document.createElement('p');
         let playerRating = document.createElement('p');
         let editIcon = document.createElement('i');
         editIcon.setAttribute('class', "fas fa-pen edit-player-icon");
-        editIcon.setAttribute('id', playerPool[player]._id);
-        editIcon.setAttribute('onclick', 'editPlayer(this)')
+       
         playerName.setAttribute('class', 'player-name')
         playerLastName.setAttribute('class', 'player-last-name');
         playerLastName.setAttribute('id', playerId + "-last-name" )
@@ -113,18 +114,21 @@ displayPlayerPool(firstNameSort);
 
 // Toggle edit player modal
 let toggleEditModal = () => {
+    let body = document.querySelector('body');
     let modalBackground = document.getElementById('manage-modals');
     let editPlayerForm = document.getElementById('edit-player-form');
     let playerPool = document.getElementById('player-pool')
     if(modalBackground.style.display == ('flex')){
         modalBackground.style.display = ('none')
         editPlayerForm.style.display = ('none');
-        playerPool.classList.remove("hide-background")
+        playerPool.classList.remove("hide-background");
+        body.style.display = 'initial';
     }else {
         window.scrollTo(0,0);
         modalBackground.style.display = ('flex')
         editPlayerForm.style.display = ('flex');
         playerPool.classList.add('hide-background');
+        body.style.display = 'fixed';
     }
 }
 
@@ -197,18 +201,21 @@ editForm.addEventListener('submit', async (e) => {
 // Toggle add player modal 
 let toggleAddModal = () =>  {
     // Open add modal
+    let body = document.querySelector('body');
     let modalBackground = document.getElementById('manage-modals');
     let addPlayer = document.getElementById('add-player-form');
     let playerPool = document.getElementById('player-pool')
     if(modalBackground.style.display == ('flex')){
         modalBackground.style.display = ('none');
         addPlayer.style.display = ('none');
-        playerPool.classList.remove("hide-background")
+        playerPool.classList.remove("hide-background");
+        body.style.display = 'initial';
     }else {
         window.scrollTo(0,0);
         modalBackground.style.display = ('flex');
         addPlayer.style.display = ('flex');
         playerPool.classList.add('hide-background');
+        body.style.display = 'fixed';
     }
 }
 
