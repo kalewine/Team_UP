@@ -318,13 +318,11 @@ input#sort-first-manage:checked ~ #manage-sort-selector {
 /* Edit/Add Modals Styles */
 .manage-modals {
   display: none; 
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-  position: absolute; 
-  top: 0;
-  right: 0; 
-  flex-direction: column; 
+  justify-content: center;
   align-items: center;
+  position: relative; 
   background-color:rgba(14, 14, 14, 0.71);
   z-index: 100;
 }
