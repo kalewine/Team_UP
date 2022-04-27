@@ -1031,12 +1031,10 @@ input[type="checkbox"] {
   background-color: rgba(36, 32, 32, 0.62);
   width: 100vw;
   height: 100px;
-  padding: 1rem 1rem 0 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
 
-#queue-container{
-  height: 100vh;
-}
 
 .queue-text {
   font-style: italic; 
