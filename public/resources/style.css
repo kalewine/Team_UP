@@ -62,11 +62,14 @@ header {
 /* Home Screen Styles */
 .home-btns {
   height: 100vh;
+  width: 100vw;
+  position: fixed;
   display: flex; 
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding-top: 1rem;
+  overflow-y: hidden;
 }
 
 .large-home-btn {
