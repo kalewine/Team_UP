@@ -231,7 +231,7 @@ let selectPlayer = (selected) => {
 }
 
 let queuePlayer = (playerData) => {
-    swapping ? body.style.overflowY = "initial" : body.style.overflowY = "hidden"
+    
     // Style first selected player
     while(playerData.firstChild){
         playerData.removeChild(playerData.firstChild)
