@@ -871,19 +871,24 @@ input[type="checkbox"] {
 /* Team styles */
 #team-display {
   position: relative;
-  height: 100%;
+  height: 100vh;
+  width: 100%;
+  border: solid red;
 }
+
 #column-positioner {
   display: flex;
-  width: 100vw;
-  height: 100%;
-}
+  width: fit-content;
+  height: auto; 
+  border: solid orange 4px;
+} 
 
 .team-column {
   width: 100%; 
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: solid darkcyan;
 }
 
 .name-container {
