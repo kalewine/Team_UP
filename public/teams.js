@@ -295,6 +295,8 @@ let queuePlayer = (playerData) => {
     swapping = true;
 }
 
+let body = document.querySelector('body');
+
 let confirmSwap = (playerData) => {
     
     playerData.removeAttribute('onclick');
@@ -311,7 +313,6 @@ let confirmSwap = (playerData) => {
     let confirmSwap = document.createElement('div');
     // hide background
     let teamDisplay = document.getElementById('team-display')
-    teamDisplay.classList.add('hide-teams');
     teamDisplay.insertAdjacentElement('afterbegin', confirmSwap);
     confirmSwap.setAttribute('id', 'confirm-swap');
     let queuedPlayer = document.getElementById('queued-player');
@@ -361,6 +362,8 @@ let confirmSwap = (playerData) => {
     positionBtn.appendChild(swapBtn);
 
     confirmSwap.appendChild(positionBtn);
+    
+    body.classList.add('freeze');
 }
 
 let cancelSwap = () => {
@@ -420,6 +423,7 @@ let resetDisplay= () => {
     while (columnPositioner.firstChild){
         columnPositioner.removeChild(columnPositioner.firstChild);
     }
+    body.classList.remove('freeze');
     swappingPlayers = [];
     swapping = false;
 }

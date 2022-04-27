@@ -122,15 +122,13 @@ let toggleEditModal = () => {
         modalBackground.style.display = ('none')
         editPlayerForm.style.display = ('none');
         playerPool.classList.remove("hide-background");
-        body.style.position = 'initial';
-        body.style.overflowY = 'initial';
+        body.classList.remove('freeze');
     }else {
         window.scrollTo(0,0);
         modalBackground.style.display = ('flex')
         editPlayerForm.style.display = ('flex');
         playerPool.classList.add('hide-background');
-        body.style.position = 'fixed';
-        body.style.overflowY = 'hidden';
+        body.classList.add('freeze');
     }
 }
 
@@ -211,16 +209,14 @@ let toggleAddModal = () =>  {
         modalBackground.style.display = ('none');
         addPlayer.style.display = ('none');
         playerPool.classList.remove("hide-background");
-        body.style.position = 'initial';
-        body.style.overflowY = 'initial';
+        body.classList.remove('freeze');
         
     }else {
         window.scrollTo(0,0);
         modalBackground.style.display = ('flex');
         addPlayer.style.display = ('flex');
         playerPool.classList.add('hide-background');
-        body.style.position = 'fixed';
-        body.style.overflowY = 'hidden';
+        body.classList.add('freeze');
     }
 }
 

@@ -30,6 +30,11 @@ body {
  height: 100vw;
 }
 
+body.freeze {
+  position:  fixed;
+  overflow-y: hidden;
+}
+
 a {
   text-decoration: none;
   color: #000;
@@ -142,9 +147,6 @@ header {
   margin-top: 3rem;
 }
 
-.hide-teams {
-  overflow: hidden;
-}
 
 .sort-by {
   position: relative; 
@@ -232,6 +234,7 @@ input#sort-first-manage:checked ~ #manage-sort-selector {
   margin: 0.8rem; 
   width: 284px;
   height: 59px;
+  cursor: pointer;
 }
 
 .male {
@@ -249,8 +252,7 @@ input#sort-first-manage:checked ~ #manage-sort-selector {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  margin-left: 1rem;  
-  cursor: default;
+  margin-left: 1rem; 
 } 
 
 .player-last-name {
@@ -272,7 +274,6 @@ input#sort-first-manage:checked ~ #manage-sort-selector {
   font-size: 2rem; 
   width: 25%;
   height: 100%;
-  cursor: default;
   margin-right: 1.5rem;
 }
 
