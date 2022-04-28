@@ -411,6 +411,7 @@ input#sort-first-manage:checked ~ #manage-sort-selector {
   width: 272px;
   height: 48px;
   background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.25);
   box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25);
   border-radius: 9px;
   text-align: center;
