@@ -342,6 +342,12 @@ input#sort-first-manage:checked ~ #manage-sort-selector {
   z-index: 10; 
 }
 
+@media screen and (max-device-width: 640px){
+  .manage-modal {
+    margin-top: 20%;
+  }
+}
+
 .manage-form {
   display: flex; 
   flex-direction: column;
