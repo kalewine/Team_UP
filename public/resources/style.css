@@ -1125,7 +1125,8 @@ input[type="checkbox"] {
   margin: 2rem 0;
 }
 
-@media (orientation: landscape) {
+@media screen and (max-device-width: 640px) and (orientation: landscape){
+  
   body {
     overflow-y: hidden;
   }
