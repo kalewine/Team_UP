@@ -344,7 +344,7 @@ input#sort-first-manage:checked ~ #manage-sort-selector {
 
 @media screen and (max-device-width: 640px){
   .manage-modal {
-    margin-top: 20%;
+    margin-top: 10%;
   }
 }
 
