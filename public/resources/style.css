@@ -338,7 +338,7 @@ input#sort-first-manage:checked ~ #manage-sort-selector {
   background-color: #fff;
   border-radius: 10px;
   padding: 2rem 1rem 1rem 1rem;
-  margin-top: 10%;
+  margin: auto 0;
   z-index: 10; 
 }
 
@@ -359,7 +359,7 @@ input#sort-first-manage:checked ~ #manage-sort-selector {
   width: 100%;
   display: flex; 
   justify-content: space-between;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
   max-width: 500px;
 }
 
@@ -525,7 +525,7 @@ input[type='radio']{
 /* Gender Selectors */
 .gender-selection {
   position: relative; 
-  margin: 2rem 0; 
+  margin: 1rem 0; 
   padding: 0 1rem; 
   box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25);
   border-radius: 27px;
