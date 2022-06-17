@@ -34,7 +34,6 @@ storedNames.loadDatabase();
 
 
 app.get('/getDatabase', (req, res) => {
-    console.log('getDatabase request')
     
     playerDatabase.find({}, (err, data) => {
         if(err){
@@ -48,7 +47,6 @@ app.get('/getDatabase', (req, res) => {
 });
 
 app.post('/addToDatabase', (req, res) =>{
-    console.log('addToDatabase request')
     let newPlayer = req.body;
     playerDatabase.insert(newPlayer);
     res.json({
@@ -58,7 +56,6 @@ app.post('/addToDatabase', (req, res) =>{
 });
  
 app.post('/findPlayer', (req, res) => {
-    console.log("get player request made")
     let playerId = req.body;
     
     playerDatabase.findOne(playerId, function (err, doc) {
@@ -73,9 +70,7 @@ app.post('/findPlayer', (req, res) => {
 });
 
 app.post('/updatePlayer', (req, res) => {
-    console.log("received editted player information")
     let data = req.body;
-    console.log(data)
     playerDatabase.update({_id: data.playerId}, { $set: { lastName: data.lastName, firstName: data.firstName, rating: data.rating, gender: data.gender }}, function(err, numReplaced){
 
     })
@@ -86,7 +81,6 @@ app.post('/updatePlayer', (req, res) => {
 });
 
 app.post('/removePlayer', (req, res) => {
-    console.log("receive request to remove player")
     let data = req.body;
     playerDatabase.remove({_id: data.playerId}, {}, function(err, numReplaced){
 
@@ -99,7 +93,6 @@ app.post('/removePlayer', (req, res) => {
 
 
 app.post('/createPlayersArray', (req, res) => {
-    console.log('Create players array' )
     playerArray.remove({}, { multi: true});
     let players = req.body;
     players.forEach(player => playerArray.insert(player))
@@ -107,7 +100,6 @@ app.post('/createPlayersArray', (req, res) => {
 })
 
 app.get('/getPlayersArray', (req, res) => {
-    console.log('Get Players Array requested' )
     
     playerArray.find({}, (err, data) => {
         if(err){
@@ -143,7 +135,6 @@ app.get('/sendTeamsNumber', (req, res) => {
 
 app.post('/storeTeams', (req, res) => {
     storedTeams.remove({}, { multi: true});
-    console.log("storing teams")
     let teamsArray = req.body;
     for(let teams in teamsArray){
         storedTeams.insert([{team: teamsArray[teams], _id: teams}])
@@ -151,21 +142,18 @@ app.post('/storeTeams', (req, res) => {
 })
 
 app.get('/sendTeams', (req, res) => {
-    console.log("sending stored teams")
     storedTeams.find({}, (err, data) => {
         if(err){
             console.log(err)
             res.end();
             return;
         }
-        console.log(data)
         res.json(data);
     })
 })
 
 app.post('/storeNames', (req, res) => {
-    console.log('storing team name')
-    console.log(req.body)
+ 
     storedNames.remove({}, { multi: true});
     let newName = req.body;
     storedNames.insert(newName)
@@ -175,7 +163,6 @@ app.post('/storeNames', (req, res) => {
 })
 
 app.get('/sendNames', (req, res) => {
-    console.log("sending stored team names")
     storedNames.find({}, (err, data) => {
         if(err){
             console.log(err)
